@@ -1,0 +1,4247 @@
+[
+  {
+    "Pusat": {
+      "NamaPusat": "Kantor Pusat HKBP (Pearaja Tarutung)",
+      "Distrik": [
+        {
+          "IdDistrik": "6ad3163e4097e1b931dae462",
+          "KodeDistrik": "DIS-08",
+          "NamaDistrik": "Distrik VIII DKI Jakarta",
+          "NamaPraeses": "Pdt. Bernard Manik, M.Th",
+          "Resort": [
+            {
+              "IdResort": "6ad3163e4097e1b931dae463",
+              "KodeResort": "RES-01",
+              "NamaResort": "Resort Tebet",
+              "NamaPendetaResort": "Pdt. Victor Tinambunan, MST",
+              "Huria": [
+                {
+                  "NamaHuria": "HKBP Sudirman Jakarta",
+                  "IdHuria": "H-1.1.1.1",
+                  "LokasiHuria": "Jl. Jend. Sudirman Kav. 32, Jakarta Pusat",
+                  "TahunBerdiri": "1956",
+                  "NamaPendetaPimpinan": "Pdt. Victor Tinambunan, MST",
+                  "JumlahJemaat": 1450,
+                  "KepalaKeluarga": "380 KK",
+                  "WartaJemaat": {
+                    "Tema": "Manghaporseai Jesus Kristus Sipangolu",
+                    "SubTema": "Lam Margogo di Bagasan Haporseaon, Panghiramon, dohot Holong (1 Korint 13:13)",
+                    "TataIbadah": [
+                      "Marende BE No. 6: 1-3 'Puji Jahowa'",
+                      "Votum - Introitus - Tangiang Buka",
+                      "Marende BE No. 171: 1-2 'Tandai Ma Au'",
+                      "Patik ni Debata: Patik I - X",
+                      "Koor Ina Hanna",
+                      "Manopoti Dosa & Baga-baga Hasesaan ni Dosa",
+                      "Marende BE No. 435: 1 'Marolopolop Tondingki'",
+                      "Epistel: Markus 10: 46-52",
+                      "Koor Ama / Parhalado",
+                      "Manghatindangkon Haporseaon (Apostolikum)",
+                      "Tingting Huria & Warta Parhepengon",
+                      "Marende BE No. 260: 1--- 'Holong ni RohaNa'",
+                      "Jamita (Khotbah)",
+                      "Marende BE No. 792: 1--- (Papungu Pelean Ia, Ib, IIa, IIb)",
+                      "Tangiang Pelean, Pasupasu, dohot Amen (3x)"
+                    ],
+                    "TingtingNaMarragam": [
+                      "Partangiangan Lunggu/Wijk dipatupa ari Rabu pukul 19.30 WIB di bagas ni ruas",
+                      "Sermon Parhalado / Sintua dipatupa ari Sabtu pukul 10.00 WIB di Consistori",
+                      "Latihan Koor Naposobulung & Remaja dipatupa ari Sabtu pukul 18.00 WIB",
+                      "Pendaftaran Katekisasi Sidi (Malua) taon ajaran 2026/2027 nunga dipungka",
+                      "Pesta Gotilon Huria taon 2026 dipatupa di ari Minggu tanggal 23 Agustus 2026"
+                    ],
+                    "TingtingParhepengon": [
+                      "Pelean Minggu Pelean Ia, Ib, IIa, IIb",
+                      "Penerimaan Iuran Taon Jemaat (Guguan 2026)",
+                      "Pelean Hamuliateon Parbagasan / Ulaon Na Badia",
+                      "Setoran Sentralisasi Keuangan Hatopan HKBP 55% tu Kantor Pusat Pearaja"
+                    ]
+                  },
+                  "Lunggu": [
+                    {
+                      "IdLunggu": "L-H-1.1.1.1-01",
+                      "NamaLunggu": "Lunggu Sion",
+                      "Keterangan": "Sektor I (Utara)"
+                    },
+                    {
+                      "IdLunggu": "L-H-1.1.1.1-02",
+                      "NamaLunggu": "Lunggu Bethel",
+                      "Keterangan": "Sektor II (Selatan)"
+                    },
+                    {
+                      "IdLunggu": "L-H-1.1.1.1-03",
+                      "NamaLunggu": "Lunggu Jerusalem",
+                      "Keterangan": "Sektor III (Pusat)"
+                    },
+                    {
+                      "IdLunggu": "L-H-1.1.1.1-04",
+                      "NamaLunggu": "Lunggu Galilea",
+                      "Keterangan": "Sektor IV (Barat)"
+                    },
+                    {
+                      "IdLunggu": "L-H-1.1.1.1-05",
+                      "NamaLunggu": "Lunggu Hebron",
+                      "Keterangan": "Sektor V (Timur)"
+                    },
+                    {
+                      "IdLunggu": "L-H-1.1.1.1-06",
+                      "NamaLunggu": "Lunggu Nazaret",
+                      "Keterangan": "Sektor VI (Pinggiran)"
+                    }
+                  ],
+                  "SesiIbadah": [
+                    {
+                      "IdSesi": "S-H-1.1.1.1-01-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-01-04",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 324,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3645000
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1215000
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2025000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1215000
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-01-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-01-04",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 396,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4455000
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1485000
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2475000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1485000
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-02-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-01-11",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 307,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3462750
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1154250
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1923750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1154250
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-02-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-01-11",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 377,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4232250
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1410750
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2351250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1410750
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-03-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-01-18",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 310,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3499200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1166400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1944000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1166400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-03-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-01-18",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 381,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4276800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1425600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2376000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1425600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-04-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-01-25",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 336,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3790800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1263600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2106000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1263600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-04-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-01-25",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 412,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4633200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1544400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2574000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1544400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-05-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-02-01",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 304,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3426300
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1142100
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1903500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1142100
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-05-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-02-01",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 372,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4187700
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1395900
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2326500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1395900
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-06-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-02-08",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 304,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3426300
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1142100
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1903500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1142100
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-06-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-02-08",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 372,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4187700
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1395900
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2326500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1395900
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-07-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-02-15",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 307,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3462750
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1154250
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1923750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1154250
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-07-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-02-15",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 377,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4232250
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1410750
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2351250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1410750
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-08-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-02-22",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 324,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3645000
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1215000
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2025000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1215000
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-08-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-02-22",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 396,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4455000
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1485000
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2475000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1485000
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-09-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-03-01",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 314,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3535650
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1178550
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1964250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1178550
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-09-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-03-01",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 384,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4321350
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1440450
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2400750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1440450
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-10-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-03-08",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 304,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3426300
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1142100
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1903500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1142100
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-10-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-03-08",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 372,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4187700
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1395900
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2326500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1395900
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-11-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-03-15",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 304,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3426300
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1142100
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1903500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1142100
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-11-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-03-15",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 372,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4187700
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1395900
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2326500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1395900
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-12-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-03-22",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 301,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3389849
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1129949
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1883249
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1129952
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-12-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-03-22",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 368,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4143150
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1381050
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2301750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1381050
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-13-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-03-29",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 327,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3681450
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1227150
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2045250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1227150
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-13-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-03-29",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 400,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4499550
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1499850
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2499750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1499850
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-14-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-04-05",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 777,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 8748000
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 2916000
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 4860000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 2916000
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-14-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-04-05",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 951,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 10692000
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 3564000
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 5940000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 3564000
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-15-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-04-12",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 340,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3827250
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1275750
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2126250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1275750
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-15-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-04-12",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 416,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4677750
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1559250
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2598750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1559250
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-16-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-04-19",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 320,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3608550
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1202850
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2004750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1202850
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-16-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-04-19",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 392,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4410450
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1470150
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2450250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1470150
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-17-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-04-26",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 343,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3863700
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1287900
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2146500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1287900
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-17-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-04-26",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 420,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4722300
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1574100
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2623500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1574100
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-18-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-05-03",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 310,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3499200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1166400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1944000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1166400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-18-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-05-03",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 381,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4276800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1425600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2376000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1425600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-19-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-05-10",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 343,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3863700
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1287900
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2146500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1287900
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-19-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-05-10",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 420,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4722300
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1574100
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2623500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1574100
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-20-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-05-17",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 310,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3499200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1166400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1944000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1166400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-20-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-05-17",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 381,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4276800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1425600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2376000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1425600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-21-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-05-24",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 307,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3462750
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1154250
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1923750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1154250
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-21-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-05-24",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 377,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4232250
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1410750
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2351250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1410750
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-22-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-05-31",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 336,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3790800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1263600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2106000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1263600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-22-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-05-31",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 412,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4633200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1544400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2574000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1544400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-23-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-06-07",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 307,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3462750
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1154250
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1923750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1154250
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-23-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-06-07",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 377,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4232250
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1410750
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2351250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1410750
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-24-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-06-14",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 327,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3681450
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1227150
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2045250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1227150
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-24-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-06-14",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 400,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4499550
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1499850
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2499750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1499850
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-25-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-06-21",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 310,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3499200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1166400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1944000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1166400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-25-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-06-21",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 381,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4276800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1425600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2376000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1425600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-26-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-06-28",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 310,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3499200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1166400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1944000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1166400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-26-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-06-28",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 381,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4276800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1425600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2376000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1425600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-27-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-07-05",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 301,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3389849
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1129949
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1883249
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1129952
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-27-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-07-05",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 368,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4143150
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1381050
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2301750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1381050
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-28-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-07-12",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 330,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3717900
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1239300
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2065500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1239300
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-28-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-07-12",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 404,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4544100
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1514700
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2524500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1514700
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-29-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-07-19",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 301,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3389849
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1129949
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1883249
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1129952
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-29-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-07-19",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 368,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4143150
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1381050
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2301750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1381050
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-30-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-07-26",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 320,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3608550
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1202850
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2004750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1202850
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-30-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-07-26",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 392,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4410450
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1470150
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2450250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1470150
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-31-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-08-02",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 317,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3572100
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1190700
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1984500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1190700
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-31-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-08-02",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 388,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4365900
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1455300
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2425500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1455300
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-32-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-08-09",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 301,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3389849
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1129949
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1883249
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1129952
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-32-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-08-09",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 368,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4143150
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1381050
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2301750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1381050
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-33-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-08-16",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 301,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3389849
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1129949
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1883249
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1129952
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-33-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-08-16",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 368,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4143150
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1381050
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2301750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1381050
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-34-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-08-23",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 333,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3754350
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1251450
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2085750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1251450
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-34-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-08-23",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 408,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4588650
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1529550
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2549250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1529550
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-35-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-08-30",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 320,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3608550
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1202850
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2004750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1202850
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-35-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-08-30",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 392,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4410450
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1470150
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2450250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1470150
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-36-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-09-06",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 336,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3790800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1263600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2106000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1263600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-36-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-09-06",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 412,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4633200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1544400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2574000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1544400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-37-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-09-13",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 336,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3790800
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1263600
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2106000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1263600
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-37-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-09-13",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 412,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4633200
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1544400
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2574000
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1544400
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-38-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-09-20",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 314,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3535650
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1178550
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1964250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1178550
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-38-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-09-20",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 384,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4321350
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1440450
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2400750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1440450
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-39-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-09-27",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 317,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3572100
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1190700
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1984500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1190700
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-39-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-09-27",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 388,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4365900
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1455300
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2425500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1455300
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-40-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-10-04",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 314,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3535650
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1178550
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 1964250
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1178550
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-40-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-10-04",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 384,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4321350
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1440450
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2400750
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1440450
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-41-1",
+                      "NamaSesi": "Ibadah Pagi (Bahasa Batak)",
+                      "Tanggal": "2026-10-11",
+                      "JamMulai": "07:00",
+                      "JumlahHadir": 343,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 3863700
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1287900
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2146500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1287900
+                        }
+                      ]
+                    },
+                    {
+                      "IdSesi": "S-H-1.1.1.1-41-2",
+                      "NamaSesi": "Ibadah Siang (Bahasa Indonesia/Batak)",
+                      "Tanggal": "2026-10-11",
+                      "JamMulai": "10:00",
+                      "JumlahHadir": 420,
+                      "Pelean": [
+                        {
+                          "Jenis": "1a",
+                          "Nominal": 4722300
+                        },
+                        {
+                          "Jenis": "1b",
+                          "Nominal": 1574100
+                        },
+                        {
+                          "Jenis": "2a",
+                          "Nominal": 2623500
+                        },
+                        {
+                          "Jenis": "2b",
+                          "Nominal": 1574100
+                        }
+                      ]
+                    }
+                  ],
+                  "KategoriPemasukan": [
+                    {
+                      "IdKategori": "K-01",
+                      "NamaKategori": "Pelean Minggu (Ia, Ib, IIa, IIb)",
+                      "IdKategoriInduk": ""
+                    },
+                    {
+                      "IdKategori": "K-02",
+                      "NamaKategori": "Guguan / Iuran Taon Jemaat",
+                      "IdKategoriInduk": ""
+                    },
+                    {
+                      "IdKategori": "K-03",
+                      "NamaKategori": "Hamuliateon (Ucapan Syukur)",
+                      "IdKategoriInduk": ""
+                    },
+                    {
+                      "IdKategori": "K-04",
+                      "NamaKategori": "Pesta Gotilon (Pesta Panen)",
+                      "IdKategoriInduk": ""
+                    },
+                    {
+                      "IdKategori": "K-05",
+                      "NamaKategori": "Pelean Partangiangan Lunggu",
+                      "IdKategoriInduk": ""
+                    },
+                    {
+                      "IdKategori": "K-06",
+                      "NamaKategori": "Pelean Ulaon Na Badia",
+                      "IdKategoriInduk": ""
+                    },
+                    {
+                      "IdKategori": "K-07",
+                      "NamaKategori": "Pelean Pamasumasuon (Pernikahan)",
+                      "IdKategoriInduk": ""
+                    },
+                    {
+                      "IdKategori": "K-08",
+                      "NamaKategori": "Pelean Tardidi (Baptisan Kudus)",
+                      "IdKategoriInduk": ""
+                    }
+                  ],
+                  "PemasukanJemaat": [
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-01-PM",
+                      "Tanggal": "2026-01-04",
+                      "Nominal": 18000000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Epiphanias (2026-01-04)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-01-HM",
+                      "Tanggal": "2026-01-04",
+                      "Nominal": 8099999,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-02-PM",
+                      "Tanggal": "2026-01-11",
+                      "Nominal": 17100000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu I Dung Epiphanias (2026-01-11)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-02-IT",
+                      "Tanggal": "2026-01-11",
+                      "Nominal": 26460000,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-01"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-03-PM",
+                      "Tanggal": "2026-01-18",
+                      "Nominal": 17280000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu II Dung Epiphanias (2026-01-18)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-03-LG",
+                      "Tanggal": "2026-01-18",
+                      "Nominal": 5040000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-01"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-04-PM",
+                      "Tanggal": "2026-01-25",
+                      "Nominal": 18720000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu III Dung Epiphanias (2026-01-25)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-04-HM",
+                      "Tanggal": "2026-01-25",
+                      "Nominal": 8460000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-05-PM",
+                      "Tanggal": "2026-02-01",
+                      "Nominal": 16920000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Septuagesima (2026-02-01)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-06-PM",
+                      "Tanggal": "2026-02-08",
+                      "Nominal": 16920000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Sexagesima (2026-02-08)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-06-IT",
+                      "Tanggal": "2026-02-08",
+                      "Nominal": 26100000,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-02"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-07-PM",
+                      "Tanggal": "2026-02-15",
+                      "Nominal": 17100000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Estomihi (2026-02-15)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-07-HM",
+                      "Tanggal": "2026-02-15",
+                      "Nominal": 6660000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-07-LG",
+                      "Tanggal": "2026-02-15",
+                      "Nominal": 5040000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-02"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-08-PM",
+                      "Tanggal": "2026-02-22",
+                      "Nominal": 18000000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Invocavit (2026-02-22)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-09-PM",
+                      "Tanggal": "2026-03-01",
+                      "Nominal": 17460000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Reminiscere (2026-03-01)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-10-PM",
+                      "Tanggal": "2026-03-08",
+                      "Nominal": 16920000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Oculi (2026-03-08)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-10-IT",
+                      "Tanggal": "2026-03-08",
+                      "Nominal": 22860000,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-03"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-10-HM",
+                      "Tanggal": "2026-03-08",
+                      "Nominal": 8460000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-11-PM",
+                      "Tanggal": "2026-03-15",
+                      "Nominal": 16920000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Laetare (2026-03-15)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-11-LG",
+                      "Tanggal": "2026-03-15",
+                      "Nominal": 5400000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-03"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-12-PM",
+                      "Tanggal": "2026-03-22",
+                      "Nominal": 16739999,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Judika (2026-03-22)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-13-PM",
+                      "Tanggal": "2026-03-29",
+                      "Nominal": 18180000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Palmarum (2026-03-29)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-13-HM",
+                      "Tanggal": "2026-03-29",
+                      "Nominal": 6660000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-14-PM",
+                      "Tanggal": "2026-04-05",
+                      "Nominal": 43200000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Pesta Paskah I (Haheheon ni Tuhan Jesus) (2026-04-05)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-PASKAH",
+                      "Tanggal": "2026-04-05",
+                      "Nominal": 27000000,
+                      "IdKategori": "K-06",
+                      "Keterangan": "Pelean Ulaon Na Badia & Paskah 2026"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-14-IT",
+                      "Tanggal": "2026-04-05",
+                      "Nominal": 23040000,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-04"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-15-PM",
+                      "Tanggal": "2026-04-12",
+                      "Nominal": 18900000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Quasimodogeniti (2026-04-12)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-15-LG",
+                      "Tanggal": "2026-04-12",
+                      "Nominal": 5220000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-04"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-16-PM",
+                      "Tanggal": "2026-04-19",
+                      "Nominal": 17820000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Misericordias Domini (2026-04-19)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-16-HM",
+                      "Tanggal": "2026-04-19",
+                      "Nominal": 9000000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-17-PM",
+                      "Tanggal": "2026-04-26",
+                      "Nominal": 19080000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Jubilate (2026-04-26)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-18-PM",
+                      "Tanggal": "2026-05-03",
+                      "Nominal": 17280000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Cantate (2026-05-03)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-18-IT",
+                      "Tanggal": "2026-05-03",
+                      "Nominal": 23940000,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-05"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-19-PM",
+                      "Tanggal": "2026-05-10",
+                      "Nominal": 19080000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Rogate (2026-05-10)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-19-HM",
+                      "Tanggal": "2026-05-10",
+                      "Nominal": 9000000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-19-LG",
+                      "Tanggal": "2026-05-10",
+                      "Nominal": 6840000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-05"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-20-PM",
+                      "Tanggal": "2026-05-17",
+                      "Nominal": 17280000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Exaudi (2026-05-17)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-21-PM",
+                      "Tanggal": "2026-05-24",
+                      "Nominal": 17100000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Pesta Pentakosta I (2026-05-24)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-22-PM",
+                      "Tanggal": "2026-05-31",
+                      "Nominal": 18720000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu Trinitatis (2026-05-31)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-22-IT",
+                      "Tanggal": "2026-05-31",
+                      "Nominal": 25920000,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-05"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-22-HM",
+                      "Tanggal": "2026-05-31",
+                      "Nominal": 9000000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-23-PM",
+                      "Tanggal": "2026-06-07",
+                      "Nominal": 17100000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu I Dung Trinitatis (2026-06-07)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-23-LG",
+                      "Tanggal": "2026-06-07",
+                      "Nominal": 4500000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-06"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-24-PM",
+                      "Tanggal": "2026-06-14",
+                      "Nominal": 18180000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu II Dung Trinitatis (2026-06-14)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-25-PM",
+                      "Tanggal": "2026-06-21",
+                      "Nominal": 17280000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu III Dung Trinitatis (2026-06-21)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-25-HM",
+                      "Tanggal": "2026-06-21",
+                      "Nominal": 9360000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-26-PM",
+                      "Tanggal": "2026-06-28",
+                      "Nominal": 17280000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu IV Dung Trinitatis (2026-06-28)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-26-IT",
+                      "Tanggal": "2026-06-28",
+                      "Nominal": 24839999,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-06"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-27-PM",
+                      "Tanggal": "2026-07-05",
+                      "Nominal": 16739999,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu V Dung Trinitatis (2026-07-05)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-27-LG",
+                      "Tanggal": "2026-07-05",
+                      "Nominal": 4680000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-07"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-28-PM",
+                      "Tanggal": "2026-07-12",
+                      "Nominal": 18360000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu VI Dung Trinitatis (2026-07-12)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-28-HM",
+                      "Tanggal": "2026-07-12",
+                      "Nominal": 8460000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-29-PM",
+                      "Tanggal": "2026-07-19",
+                      "Nominal": 16739999,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu VII Dung Trinitatis (2026-07-19)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-30-PM",
+                      "Tanggal": "2026-07-26",
+                      "Nominal": 17820000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu VIII Dung Trinitatis (2026-07-26)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-30-IT",
+                      "Tanggal": "2026-07-26",
+                      "Nominal": 24659999,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-07"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-31-PM",
+                      "Tanggal": "2026-08-02",
+                      "Nominal": 17640000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu IX Dung Trinitatis (2026-08-02)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-31-HM",
+                      "Tanggal": "2026-08-02",
+                      "Nominal": 8099999,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-31-LG",
+                      "Tanggal": "2026-08-02",
+                      "Nominal": 6660000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-08"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-32-PM",
+                      "Tanggal": "2026-08-09",
+                      "Nominal": 16739999,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu X Dung Trinitatis (2026-08-09)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-33-PM",
+                      "Tanggal": "2026-08-16",
+                      "Nominal": 16739999,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XI Dung Trinitatis (2026-08-16)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-34-PM",
+                      "Tanggal": "2026-08-23",
+                      "Nominal": 18540000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XII Dung Trinitatis (Pesta Gotilon) (2026-08-23)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-34-IT",
+                      "Tanggal": "2026-08-23",
+                      "Nominal": 23400000,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-08"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-34-HM",
+                      "Tanggal": "2026-08-23",
+                      "Nominal": 7919999,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-35-PM",
+                      "Tanggal": "2026-08-30",
+                      "Nominal": 17820000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XIII Dung Trinitatis (2026-08-30)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-35-LG",
+                      "Tanggal": "2026-08-30",
+                      "Nominal": 5940000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-08"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-36-PM",
+                      "Tanggal": "2026-09-06",
+                      "Nominal": 18720000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XIV Dung Trinitatis (2026-09-06)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-37-PM",
+                      "Tanggal": "2026-09-13",
+                      "Nominal": 18720000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XV Dung Trinitatis (2026-09-13)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-37-HM",
+                      "Tanggal": "2026-09-13",
+                      "Nominal": 7560000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-38-PM",
+                      "Tanggal": "2026-09-20",
+                      "Nominal": 17460000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XVI Dung Trinitatis (2026-09-20)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-38-IT",
+                      "Tanggal": "2026-09-20",
+                      "Nominal": 26460000,
+                      "IdKategori": "K-02",
+                      "Keterangan": "Guguan / Iuran Taon Jemaat Periode 2026-09"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-39-PM",
+                      "Tanggal": "2026-09-27",
+                      "Nominal": 17640000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XVII Dung Trinitatis (2026-09-27)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-39-LG",
+                      "Tanggal": "2026-09-27",
+                      "Nominal": 5760000,
+                      "IdKategori": "K-05",
+                      "Keterangan": "Pelean Gabungan Partangiangan Lunggu / Sektor Bulan 2026-09"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-40-PM",
+                      "Tanggal": "2026-10-04",
+                      "Nominal": 17460000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XVIII Dung Trinitatis (2026-10-04)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-40-HM",
+                      "Tanggal": "2026-10-04",
+                      "Nominal": 9540000,
+                      "IdKategori": "K-03",
+                      "Keterangan": "Ucapan Syukur Hamuliateon Keluarga / Parbagasan"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-41-PM",
+                      "Tanggal": "2026-10-11",
+                      "Nominal": 19080000,
+                      "IdKategori": "K-01",
+                      "Keterangan": "Pelean Minggu XIX Dung Trinitatis (2026-10-11)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-GOTILON-2026",
+                      "Tanggal": "2026-08-23",
+                      "Nominal": 140400000,
+                      "IdKategori": "K-04",
+                      "Keterangan": "Silua dohot Hamuliateon Pesta Gotilon HKBP Taon 2026"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-WED-01",
+                      "Tanggal": "2026-02-14",
+                      "Nominal": 7200000,
+                      "IdKategori": "K-07",
+                      "Keterangan": "Pelean Ibadah Pamasumasuon (Pemberkatan Pernikahan Kudus)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-WED-02",
+                      "Tanggal": "2026-06-20",
+                      "Nominal": 7200000,
+                      "IdKategori": "K-07",
+                      "Keterangan": "Pelean Ibadah Pamasumasuon (Pemberkatan Pernikahan Kudus)"
+                    },
+                    {
+                      "IdTransaksi": "T-H-1.1.1.1-WED-03",
+                      "Tanggal": "2026-09-12",
+                      "Nominal": 7200000,
+                      "IdKategori": "K-07",
+                      "Keterangan": "Pelean Ibadah Pamasumasuon (Pemberkatan Pernikahan Kudus)"
+                    }
+                  ],
+                  "AlokasiTransaksi": [
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-01-P",
+                      "IdTransaksi": "T-H-1.1.1.1-01-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9900000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-01-K",
+                      "IdTransaksi": "T-H-1.1.1.1-01-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8100000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-01-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-01-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4454999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-01-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-01-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3645000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-02-P",
+                      "IdTransaksi": "T-H-1.1.1.1-02-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9405000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-02-K",
+                      "IdTransaksi": "T-H-1.1.1.1-02-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7695000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-02-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-02-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 14553000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-02-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-02-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 11907000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-03-P",
+                      "IdTransaksi": "T-H-1.1.1.1-03-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9504000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-03-K",
+                      "IdTransaksi": "T-H-1.1.1.1-03-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7776000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-03-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-03-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 2772000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-03-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-03-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2268000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-04-P",
+                      "IdTransaksi": "T-H-1.1.1.1-04-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10296000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-04-K",
+                      "IdTransaksi": "T-H-1.1.1.1-04-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8424000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-04-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-04-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4653000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-04-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-04-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3807000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-05-P",
+                      "IdTransaksi": "T-H-1.1.1.1-05-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9306000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-05-K",
+                      "IdTransaksi": "T-H-1.1.1.1-05-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7614000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-06-P",
+                      "IdTransaksi": "T-H-1.1.1.1-06-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9306000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-06-K",
+                      "IdTransaksi": "T-H-1.1.1.1-06-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7614000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-06-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-06-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 14355000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-06-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-06-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 11745000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-07-P",
+                      "IdTransaksi": "T-H-1.1.1.1-07-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9405000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-07-K",
+                      "IdTransaksi": "T-H-1.1.1.1-07-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7695000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-07-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-07-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3663000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-07-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-07-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2997000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-07-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-07-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 2772000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-07-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-07-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2268000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-08-P",
+                      "IdTransaksi": "T-H-1.1.1.1-08-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9900000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-08-K",
+                      "IdTransaksi": "T-H-1.1.1.1-08-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8100000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-09-P",
+                      "IdTransaksi": "T-H-1.1.1.1-09-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9603000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-09-K",
+                      "IdTransaksi": "T-H-1.1.1.1-09-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7857000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-10-P",
+                      "IdTransaksi": "T-H-1.1.1.1-10-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9306000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-10-K",
+                      "IdTransaksi": "T-H-1.1.1.1-10-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7614000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-10-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-10-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 12573000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-10-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-10-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 10287000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-10-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-10-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4653000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-10-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-10-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3807000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-11-P",
+                      "IdTransaksi": "T-H-1.1.1.1-11-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9306000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-11-K",
+                      "IdTransaksi": "T-H-1.1.1.1-11-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7614000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-11-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-11-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 2970000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-11-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-11-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2430000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-12-P",
+                      "IdTransaksi": "T-H-1.1.1.1-12-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9206999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-12-K",
+                      "IdTransaksi": "T-H-1.1.1.1-12-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7533000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-13-P",
+                      "IdTransaksi": "T-H-1.1.1.1-13-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9999000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-13-K",
+                      "IdTransaksi": "T-H-1.1.1.1-13-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8181000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-13-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-13-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3663000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-13-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-13-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2997000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-14-P",
+                      "IdTransaksi": "T-H-1.1.1.1-14-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 23760000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-14-K",
+                      "IdTransaksi": "T-H-1.1.1.1-14-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 19440000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-PAS-P",
+                      "IdTransaksi": "T-H-1.1.1.1-PASKAH",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 14850000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-PAS-K",
+                      "IdTransaksi": "T-H-1.1.1.1-PASKAH",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 12150000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-14-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-14-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 12672000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-14-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-14-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 10368000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-15-P",
+                      "IdTransaksi": "T-H-1.1.1.1-15-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10395000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-15-K",
+                      "IdTransaksi": "T-H-1.1.1.1-15-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8505000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-15-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-15-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 2871000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-15-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-15-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2349000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-16-P",
+                      "IdTransaksi": "T-H-1.1.1.1-16-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9801000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-16-K",
+                      "IdTransaksi": "T-H-1.1.1.1-16-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8019000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-16-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-16-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4950000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-16-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-16-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 4050000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-17-P",
+                      "IdTransaksi": "T-H-1.1.1.1-17-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10494000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-17-K",
+                      "IdTransaksi": "T-H-1.1.1.1-17-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8586000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-18-P",
+                      "IdTransaksi": "T-H-1.1.1.1-18-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9504000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-18-K",
+                      "IdTransaksi": "T-H-1.1.1.1-18-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7776000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-18-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-18-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 13167000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-18-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-18-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 10773000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-19-P",
+                      "IdTransaksi": "T-H-1.1.1.1-19-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10494000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-19-K",
+                      "IdTransaksi": "T-H-1.1.1.1-19-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8586000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-19-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-19-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4950000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-19-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-19-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 4050000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-19-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-19-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3762000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-19-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-19-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3078000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-20-P",
+                      "IdTransaksi": "T-H-1.1.1.1-20-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9504000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-20-K",
+                      "IdTransaksi": "T-H-1.1.1.1-20-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7776000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-21-P",
+                      "IdTransaksi": "T-H-1.1.1.1-21-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9405000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-21-K",
+                      "IdTransaksi": "T-H-1.1.1.1-21-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7695000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-22-P",
+                      "IdTransaksi": "T-H-1.1.1.1-22-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10296000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-22-K",
+                      "IdTransaksi": "T-H-1.1.1.1-22-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8424000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-22-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-22-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 14256000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-22-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-22-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 11664000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-22-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-22-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4950000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-22-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-22-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 4050000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-23-P",
+                      "IdTransaksi": "T-H-1.1.1.1-23-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9405000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-23-K",
+                      "IdTransaksi": "T-H-1.1.1.1-23-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7695000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-23-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-23-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 2475000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-23-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-23-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2025000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-24-P",
+                      "IdTransaksi": "T-H-1.1.1.1-24-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9999000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-24-K",
+                      "IdTransaksi": "T-H-1.1.1.1-24-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8181000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-25-P",
+                      "IdTransaksi": "T-H-1.1.1.1-25-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9504000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-25-K",
+                      "IdTransaksi": "T-H-1.1.1.1-25-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7776000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-25-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-25-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 5148000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-25-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-25-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 4212000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-26-P",
+                      "IdTransaksi": "T-H-1.1.1.1-26-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9504000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-26-K",
+                      "IdTransaksi": "T-H-1.1.1.1-26-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7776000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-26-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-26-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 13661999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-26-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-26-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 11178000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-27-P",
+                      "IdTransaksi": "T-H-1.1.1.1-27-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9206999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-27-K",
+                      "IdTransaksi": "T-H-1.1.1.1-27-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7533000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-27-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-27-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 2574000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-27-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-27-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2106000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-28-P",
+                      "IdTransaksi": "T-H-1.1.1.1-28-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10098000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-28-K",
+                      "IdTransaksi": "T-H-1.1.1.1-28-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8262000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-28-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-28-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4653000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-28-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-28-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3807000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-29-P",
+                      "IdTransaksi": "T-H-1.1.1.1-29-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9206999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-29-K",
+                      "IdTransaksi": "T-H-1.1.1.1-29-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7533000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-30-P",
+                      "IdTransaksi": "T-H-1.1.1.1-30-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9801000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-30-K",
+                      "IdTransaksi": "T-H-1.1.1.1-30-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8019000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-30-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-30-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 13562999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-30-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-30-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 11097000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-31-P",
+                      "IdTransaksi": "T-H-1.1.1.1-31-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9702000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-31-K",
+                      "IdTransaksi": "T-H-1.1.1.1-31-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7938000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-31-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-31-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4454999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-31-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-31-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3645000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-31-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-31-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3663000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-31-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-31-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2997000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-32-P",
+                      "IdTransaksi": "T-H-1.1.1.1-32-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9206999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-32-K",
+                      "IdTransaksi": "T-H-1.1.1.1-32-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7533000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-33-P",
+                      "IdTransaksi": "T-H-1.1.1.1-33-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9206999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-33-K",
+                      "IdTransaksi": "T-H-1.1.1.1-33-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7533000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-34-P",
+                      "IdTransaksi": "T-H-1.1.1.1-34-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10197000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-34-K",
+                      "IdTransaksi": "T-H-1.1.1.1-34-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8343000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-34-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-34-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 12870000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-34-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-34-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 10530000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-34-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-34-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4355999
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-34-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-34-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3564000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-35-P",
+                      "IdTransaksi": "T-H-1.1.1.1-35-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9801000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-35-K",
+                      "IdTransaksi": "T-H-1.1.1.1-35-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8019000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-35-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-35-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3267000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-35-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-35-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2673000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-36-P",
+                      "IdTransaksi": "T-H-1.1.1.1-36-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10296000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-36-K",
+                      "IdTransaksi": "T-H-1.1.1.1-36-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8424000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-37-P",
+                      "IdTransaksi": "T-H-1.1.1.1-37-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10296000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-37-K",
+                      "IdTransaksi": "T-H-1.1.1.1-37-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8424000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-37-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-37-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 4158000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-37-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-37-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3402000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-38-P",
+                      "IdTransaksi": "T-H-1.1.1.1-38-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9603000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-38-K",
+                      "IdTransaksi": "T-H-1.1.1.1-38-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7857000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-38-IT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-38-IT",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 14553000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-38-IT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-38-IT",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 11907000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-39-P",
+                      "IdTransaksi": "T-H-1.1.1.1-39-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9702000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-39-K",
+                      "IdTransaksi": "T-H-1.1.1.1-39-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7938000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-39-LG-P",
+                      "IdTransaksi": "T-H-1.1.1.1-39-LG",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3168000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-39-LG-K",
+                      "IdTransaksi": "T-H-1.1.1.1-39-LG",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 2592000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-40-P",
+                      "IdTransaksi": "T-H-1.1.1.1-40-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 9603000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-40-K",
+                      "IdTransaksi": "T-H-1.1.1.1-40-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 7857000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-40-HM-P",
+                      "IdTransaksi": "T-H-1.1.1.1-40-HM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 5247000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-40-HM-K",
+                      "IdTransaksi": "T-H-1.1.1.1-40-HM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 4293000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-41-P",
+                      "IdTransaksi": "T-H-1.1.1.1-41-PM",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 10494000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-41-K",
+                      "IdTransaksi": "T-H-1.1.1.1-41-PM",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 8586000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-GOT-P",
+                      "IdTransaksi": "T-H-1.1.1.1-GOTILON-2026",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 77220000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-GOT-K",
+                      "IdTransaksi": "T-H-1.1.1.1-GOTILON-2026",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 63180000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-WED-01-P",
+                      "IdTransaksi": "T-H-1.1.1.1-WED-01",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3960000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-WED-01-K",
+                      "IdTransaksi": "T-H-1.1.1.1-WED-01",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3240000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-WED-02-P",
+                      "IdTransaksi": "T-H-1.1.1.1-WED-02",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3960000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-WED-02-K",
+                      "IdTransaksi": "T-H-1.1.1.1-WED-02",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3240000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-WED-03-P",
+                      "IdTransaksi": "T-H-1.1.1.1-WED-03",
+                      "Peruntukan": "Setoran Pusat",
+                      "Nominal": 3960000
+                    },
+                    {
+                      "IdAlokasi": "A-H-1.1.1.1-WED-03-K",
+                      "IdTransaksi": "T-H-1.1.1.1-WED-03",
+                      "Peruntukan": "Kas Huria",
+                      "Nominal": 3240000
+                    }
+                  ],
+                  "SetoranPusat": [
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "Periode": "2026-01",
+                      "TanggalSetor": "2026-01-28",
+                      "TotalSetoran": 65537999,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-01"
+                    },
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "Periode": "2026-02",
+                      "TanggalSetor": "2026-02-28",
+                      "TotalSetoran": 62667000,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-02"
+                    },
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "Periode": "2026-03",
+                      "TanggalSetor": "2026-03-28",
+                      "TotalSetoran": 71279999,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-03"
+                    },
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "Periode": "2026-04",
+                      "TanggalSetor": "2026-04-28",
+                      "TotalSetoran": 89793000,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-04"
+                    },
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "Periode": "2026-05",
+                      "TanggalSetor": "2026-05-28",
+                      "TotalSetoran": 90288000,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-05"
+                    },
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "Periode": "2026-06",
+                      "TanggalSetor": "2026-06-28",
+                      "TotalSetoran": 63656999,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-06"
+                    },
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-07",
+                      "Periode": "2026-07",
+                      "TanggalSetor": "2026-07-28",
+                      "TotalSetoran": 59102997,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-07"
+                    },
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "Periode": "2026-08",
+                      "TanggalSetor": "2026-08-28",
+                      "TotalSetoran": 153944996,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-08"
+                    },
+                    {
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "Periode": "2026-09",
+                      "TanggalSetor": "2026-09-28",
+                      "TotalSetoran": 65736000,
+                      "Keterangan": "Sentralisasi Keuangan Hatopan HKBP Bulan 2026-09"
+                    }
+                  ],
+                  "RincianSetoranPusat": [
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-01-01",
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "IdAlokasi": "A-H-1.1.1.1-01-P",
+                      "NominalDilunasi": 9900000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-01-02",
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "IdAlokasi": "A-H-1.1.1.1-01-HM-P",
+                      "NominalDilunasi": 4454999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-01-03",
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "IdAlokasi": "A-H-1.1.1.1-02-P",
+                      "NominalDilunasi": 9405000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-01-04",
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "IdAlokasi": "A-H-1.1.1.1-02-IT-P",
+                      "NominalDilunasi": 14553000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-01-05",
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "IdAlokasi": "A-H-1.1.1.1-03-P",
+                      "NominalDilunasi": 9504000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-01-06",
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "IdAlokasi": "A-H-1.1.1.1-03-LG-P",
+                      "NominalDilunasi": 2772000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-01-07",
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "IdAlokasi": "A-H-1.1.1.1-04-P",
+                      "NominalDilunasi": 10296000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-01-08",
+                      "IdSetoran": "SP-H-1.1.1.1-01",
+                      "IdAlokasi": "A-H-1.1.1.1-04-HM-P",
+                      "NominalDilunasi": 4653000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-02-01",
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "IdAlokasi": "A-H-1.1.1.1-05-P",
+                      "NominalDilunasi": 9306000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-02-02",
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "IdAlokasi": "A-H-1.1.1.1-06-P",
+                      "NominalDilunasi": 9306000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-02-03",
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "IdAlokasi": "A-H-1.1.1.1-06-IT-P",
+                      "NominalDilunasi": 14355000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-02-04",
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "IdAlokasi": "A-H-1.1.1.1-07-P",
+                      "NominalDilunasi": 9405000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-02-05",
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "IdAlokasi": "A-H-1.1.1.1-07-HM-P",
+                      "NominalDilunasi": 3663000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-02-06",
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "IdAlokasi": "A-H-1.1.1.1-07-LG-P",
+                      "NominalDilunasi": 2772000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-02-07",
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "IdAlokasi": "A-H-1.1.1.1-08-P",
+                      "NominalDilunasi": 9900000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-02-08",
+                      "IdSetoran": "SP-H-1.1.1.1-02",
+                      "IdAlokasi": "A-H-1.1.1.1-WED-01-P",
+                      "NominalDilunasi": 3960000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-01",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-09-P",
+                      "NominalDilunasi": 9603000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-02",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-10-P",
+                      "NominalDilunasi": 9306000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-03",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-10-IT-P",
+                      "NominalDilunasi": 12573000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-04",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-10-HM-P",
+                      "NominalDilunasi": 4653000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-05",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-11-P",
+                      "NominalDilunasi": 9306000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-06",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-11-LG-P",
+                      "NominalDilunasi": 2970000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-07",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-12-P",
+                      "NominalDilunasi": 9206999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-08",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-13-P",
+                      "NominalDilunasi": 9999000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-03-09",
+                      "IdSetoran": "SP-H-1.1.1.1-03",
+                      "IdAlokasi": "A-H-1.1.1.1-13-HM-P",
+                      "NominalDilunasi": 3663000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-04-01",
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "IdAlokasi": "A-H-1.1.1.1-14-P",
+                      "NominalDilunasi": 23760000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-04-02",
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "IdAlokasi": "A-H-1.1.1.1-PAS-P",
+                      "NominalDilunasi": 14850000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-04-03",
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "IdAlokasi": "A-H-1.1.1.1-14-IT-P",
+                      "NominalDilunasi": 12672000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-04-04",
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "IdAlokasi": "A-H-1.1.1.1-15-P",
+                      "NominalDilunasi": 10395000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-04-05",
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "IdAlokasi": "A-H-1.1.1.1-15-LG-P",
+                      "NominalDilunasi": 2871000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-04-06",
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "IdAlokasi": "A-H-1.1.1.1-16-P",
+                      "NominalDilunasi": 9801000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-04-07",
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "IdAlokasi": "A-H-1.1.1.1-16-HM-P",
+                      "NominalDilunasi": 4950000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-04-08",
+                      "IdSetoran": "SP-H-1.1.1.1-04",
+                      "IdAlokasi": "A-H-1.1.1.1-17-P",
+                      "NominalDilunasi": 10494000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-01",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-18-P",
+                      "NominalDilunasi": 9504000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-02",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-18-IT-P",
+                      "NominalDilunasi": 13167000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-03",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-19-P",
+                      "NominalDilunasi": 10494000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-04",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-19-HM-P",
+                      "NominalDilunasi": 4950000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-05",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-19-LG-P",
+                      "NominalDilunasi": 3762000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-06",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-20-P",
+                      "NominalDilunasi": 9504000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-07",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-21-P",
+                      "NominalDilunasi": 9405000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-08",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-22-P",
+                      "NominalDilunasi": 10296000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-09",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-22-IT-P",
+                      "NominalDilunasi": 14256000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-05-10",
+                      "IdSetoran": "SP-H-1.1.1.1-05",
+                      "IdAlokasi": "A-H-1.1.1.1-22-HM-P",
+                      "NominalDilunasi": 4950000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-06-01",
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "IdAlokasi": "A-H-1.1.1.1-23-P",
+                      "NominalDilunasi": 9405000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-06-02",
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "IdAlokasi": "A-H-1.1.1.1-23-LG-P",
+                      "NominalDilunasi": 2475000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-06-03",
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "IdAlokasi": "A-H-1.1.1.1-24-P",
+                      "NominalDilunasi": 9999000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-06-04",
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "IdAlokasi": "A-H-1.1.1.1-25-P",
+                      "NominalDilunasi": 9504000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-06-05",
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "IdAlokasi": "A-H-1.1.1.1-25-HM-P",
+                      "NominalDilunasi": 5148000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-06-06",
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "IdAlokasi": "A-H-1.1.1.1-26-P",
+                      "NominalDilunasi": 9504000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-06-07",
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "IdAlokasi": "A-H-1.1.1.1-26-IT-P",
+                      "NominalDilunasi": 13661999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-06-08",
+                      "IdSetoran": "SP-H-1.1.1.1-06",
+                      "IdAlokasi": "A-H-1.1.1.1-WED-02-P",
+                      "NominalDilunasi": 3960000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-07-01",
+                      "IdSetoran": "SP-H-1.1.1.1-07",
+                      "IdAlokasi": "A-H-1.1.1.1-27-P",
+                      "NominalDilunasi": 9206999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-07-02",
+                      "IdSetoran": "SP-H-1.1.1.1-07",
+                      "IdAlokasi": "A-H-1.1.1.1-27-LG-P",
+                      "NominalDilunasi": 2574000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-07-03",
+                      "IdSetoran": "SP-H-1.1.1.1-07",
+                      "IdAlokasi": "A-H-1.1.1.1-28-P",
+                      "NominalDilunasi": 10098000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-07-04",
+                      "IdSetoran": "SP-H-1.1.1.1-07",
+                      "IdAlokasi": "A-H-1.1.1.1-28-HM-P",
+                      "NominalDilunasi": 4653000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-07-05",
+                      "IdSetoran": "SP-H-1.1.1.1-07",
+                      "IdAlokasi": "A-H-1.1.1.1-29-P",
+                      "NominalDilunasi": 9206999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-07-06",
+                      "IdSetoran": "SP-H-1.1.1.1-07",
+                      "IdAlokasi": "A-H-1.1.1.1-30-P",
+                      "NominalDilunasi": 9801000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-07-07",
+                      "IdSetoran": "SP-H-1.1.1.1-07",
+                      "IdAlokasi": "A-H-1.1.1.1-30-IT-P",
+                      "NominalDilunasi": 13562999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-01",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-31-P",
+                      "NominalDilunasi": 9702000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-02",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-31-HM-P",
+                      "NominalDilunasi": 4454999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-03",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-31-LG-P",
+                      "NominalDilunasi": 3663000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-04",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-32-P",
+                      "NominalDilunasi": 9206999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-05",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-33-P",
+                      "NominalDilunasi": 9206999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-06",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-34-P",
+                      "NominalDilunasi": 10197000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-07",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-34-IT-P",
+                      "NominalDilunasi": 12870000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-08",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-34-HM-P",
+                      "NominalDilunasi": 4355999
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-09",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-35-P",
+                      "NominalDilunasi": 9801000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-10",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-35-LG-P",
+                      "NominalDilunasi": 3267000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-08-11",
+                      "IdSetoran": "SP-H-1.1.1.1-08",
+                      "IdAlokasi": "A-H-1.1.1.1-GOT-P",
+                      "NominalDilunasi": 77220000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-09-01",
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "IdAlokasi": "A-H-1.1.1.1-36-P",
+                      "NominalDilunasi": 10296000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-09-02",
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "IdAlokasi": "A-H-1.1.1.1-37-P",
+                      "NominalDilunasi": 10296000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-09-03",
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "IdAlokasi": "A-H-1.1.1.1-37-HM-P",
+                      "NominalDilunasi": 4158000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-09-04",
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "IdAlokasi": "A-H-1.1.1.1-38-P",
+                      "NominalDilunasi": 9603000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-09-05",
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "IdAlokasi": "A-H-1.1.1.1-38-IT-P",
+                      "NominalDilunasi": 14553000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-09-06",
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "IdAlokasi": "A-H-1.1.1.1-39-P",
+                      "NominalDilunasi": 9702000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-09-07",
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "IdAlokasi": "A-H-1.1.1.1-39-LG-P",
+                      "NominalDilunasi": 3168000
+                    },
+                    {
+                      "IdRincian": "R-H-1.1.1.1-2026-09-08",
+                      "IdSetoran": "SP-H-1.1.1.1-09",
+                      "IdAlokasi": "A-H-1.1.1.1-WED-03-P",
+                      "NominalDilunasi": 3960000
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

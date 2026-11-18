@@ -1,0 +1,36 @@
+# Secrets and local environment
+.env
+**/.env
+!.env.example
+**/.env.example
+*.pem
+*.key
+
+# React/Vite
+**/node_modules/
+**/dist/
+**/.vite/
+
+# Python
+**/.venv/
+**/venv/
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+
+# Go build outputs
+**/tmp/
+*.exe
+*.test
+
+# Local editor/system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary generated artifacts
+*.db.tmp
+*.sqlite.tmp
+*.log
