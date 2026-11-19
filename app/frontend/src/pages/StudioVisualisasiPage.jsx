@@ -355,18 +355,35 @@ export const StudioVisualisasiPage = ({ wilayahData = [], filters = {}, onFilter
       return organisasiFilter.items.map((item, idx) => {
         let matchedHurias = []
         if (organisasiFilter.level === 'huria') {
-          matchedHurias = allHurias.filter(
-            (h) =>
-              h.NamaHuria === item.nama ||
-              h.IdHuria === item.id ||
-              h.nama === item.nama ||
-              (item.nama && (h.NamaHuria || '').toLowerCase() === item.nama.toLowerCase())
-          )
+          let matched = allHurias.filter((h) => String(h.IdHuria) === String(item.id))
+          if (matched.length === 0) {
+            matched = allHurias.filter(
+              (h) =>
+                h.NamaHuria === item.nama ||
+                h.nama === item.nama ||
+                (item.nama && (h.NamaHuria || '').toLowerCase() === item.nama.toLowerCase())
+            )
+          }
+          matchedHurias = matched
         } else if (organisasiFilter.level === 'resort') {
-          const r = allResorts.find((x) => x.name === item.nama || x.id === item.id)
+          let r = allResorts.find((x) => String(x.id) === String(item.id))
+          if (!r) {
+            r = allResorts.find(
+              (x) =>
+                x.name === item.nama ||
+                (item.nama && (x.name || '').toLowerCase() === item.nama.toLowerCase())
+            )
+          }
           matchedHurias = r?.hurias || []
         } else {
-          const d = allDistriks.find((x) => x.name === item.nama || x.id === item.id)
+          let d = allDistriks.find((x) => String(x.id) === String(item.id))
+          if (!d) {
+            d = allDistriks.find(
+              (x) =>
+                x.name === item.nama ||
+                (item.nama && (x.name || '').toLowerCase() === item.nama.toLowerCase())
+            )
+          }
           matchedHurias = d?.hurias || []
         }
 

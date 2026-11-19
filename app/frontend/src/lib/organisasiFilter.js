@@ -385,3 +385,372 @@ export function pickTop(options = [], n = 2, max = MAX_SELECTION) {
 
   return sorted.slice(0, limit).map((opt) => String(opt.id))
 }
+
+/**
+ * Menghitung status visual checkbox (checked, indeterminate, unchecked) untuk suatu entitas
+ * berdasarkan state selected aktif dan level perbandingan.
+ *
+ * @param {'distrik' | 'resort' | 'huria'} entityLevel - Level entitas yang sedang diperiksa
+ * @param {string} id - ID entitas yang sedang diperiksa
+ * @param {Object} selected - Objek { distrik: string[], resort: string[], huria: string[] }
+ * @param {Object} hierarchyInfo - Informasi relasi hirarki:
+ *   - parentId?: ID induk
+ *   - grandparentId?: ID kakek
+ *   - childIds?: ID anak-anak
+ *   - descendantHuriaIds?: ID seluruh huria di bawah entitas ini
+ * @returns {{ checked: boolean, indeterminate: boolean }}
+ */
+export function getEntityCheckboxState(entityLevel, id, selected, hierarchyInfo = {}) {
+  const compLevel = resolveComparisonLevel(selected)
+  if (!compLevel) {
+    return { checked: false, indeterminate: false }
+  }
+
+  const sId = String(id)
+  const selDistrik = new Set((selected?.distrik || []).map(String))
+  const selResort = new Set((selected?.resort || []).map(String))
+  const selHuria = new Set((selected?.huria || []).map(String))
+
+  const parentId = hierarchyInfo.parentId ? String(hierarchyInfo.parentId) : ''
+  const grandparentId = hierarchyInfo.grandparentId ? String(hierarchyInfo.grandparentId) : ''
+  const childIds = (hierarchyInfo.childIds || []).map(String)
+  const descendantHuriaIds = (hierarchyInfo.descendantHuriaIds || []).map(String)
+
+  // 1. Level perbandingan DISTRIK:
+  if (compLevel === 'distrik') {
+    if (entityLevel === 'distrik') {
+      return { checked: selDistrik.has(sId), indeterminate: false }
+    }
+    if (entityLevel === 'resort') {
+      return { checked: selDistrik.has(parentId), indeterminate: false }
+    }
+    if (entityLevel === 'huria') {
+      return { checked: selDistrik.has(grandparentId), indeterminate: false }
+    }
+  }
+
+  // 2. Level perbandingan RESORT:
+  if (compLevel === 'resort') {
+    if (entityLevel === 'distrik') {
+      if (childIds.length === 0) {
+        return { checked: selDistrik.has(sId), indeterminate: false }
+      }
+      let checkedCount = 0
+      childIds.forEach((cId) => {
+        if (selResort.has(cId)) checkedCount++
+      })
+      if (checkedCount === 0) {
+        return { checked: false, indeterminate: false }
+      }
+      if (checkedCount === childIds.length) {
+        return { checked: true, indeterminate: false }
+      }
+      return { checked: false, indeterminate: true }
+    }
+
+    if (entityLevel === 'resort') {
+      return { checked: selResort.has(sId), indeterminate: false }
+    }
+
+    if (entityLevel === 'huria') {
+      return { checked: selResort.has(parentId), indeterminate: false }
+    }
+  }
+
+  // 3. Level perbandingan HURIA:
+  if (compLevel === 'huria') {
+    if (entityLevel === 'huria') {
+      return { checked: selHuria.has(sId), indeterminate: false }
+    }
+
+    if (entityLevel === 'resort') {
+      if (childIds.length === 0) {
+        return { checked: selResort.has(sId), indeterminate: false }
+      }
+      let checkedCount = 0
+      childIds.forEach((cId) => {
+        if (selHuria.has(cId)) checkedCount++
+      })
+      if (checkedCount === 0) {
+        return { checked: false, indeterminate: false }
+      }
+      if (checkedCount === childIds.length) {
+        return { checked: true, indeterminate: false }
+      }
+      return { checked: false, indeterminate: true }
+    }
+
+    if (entityLevel === 'distrik') {
+      const checkTargets = descendantHuriaIds.length > 0 ? descendantHuriaIds : childIds
+      if (checkTargets.length === 0) {
+        return { checked: selDistrik.has(sId), indeterminate: false }
+      }
+      let checkedCount = 0
+      checkTargets.forEach((hId) => {
+        if (selHuria.has(hId)) checkedCount++
+      })
+      if (checkedCount === 0) {
+        return { checked: false, indeterminate: false }
+      }
+      if (checkedCount === checkTargets.length) {
+        return { checked: true, indeterminate: false }
+      }
+      return { checked: false, indeterminate: true }
+    }
+  }
+
+  return { checked: false, indeterminate: false }
+}
+
+/**
+ * Melakukan toggle pemilihan entitas wilayah berjenjang sesuai aturan:
+ * - Distrik dicentang -> seluruh Resort dan HKBP ikut tercentang
+ * - Resort dicentang -> hanya HKBP dalam resort tersebut ikut tercentang
+ * - HKBP dicentang -> hanya HKBP tersebut yang tercentang
+ * - Pemilihan langsung menentukan level perbandingan dan jumlah grafik
+ *
+ * @param {'distrik' | 'resort' | 'huria'} targetLevel - Level entitas yang di-klik
+ * @param {string} id - ID entitas yang di-klik
+ * @param {Object} selected - State selected saat ini
+ * @param {Object} context - Struktur hierarki { allResorts, allHurias }
+ * @param {number} max - Batas maksimal pemilihan (default: 6)
+ * @returns {{ nextSelection: Object, blocked: boolean, reason?: string }}
+ */
+export function toggleHierarchyEntity(targetLevel, id, selected, context = {}, max = MAX_SELECTION) {
+  const sId = String(id)
+  const compLevel = resolveComparisonLevel(selected)
+
+  const findResort = (rId) => (context.allResorts || []).find((r) => String(r.id) === String(rId))
+  const findHuria = (hId) => (context.allHurias || []).find((h) => String(h.id) === String(hId))
+
+  // Dapatkan status checkbox saat ini
+  let currentState = { checked: false, indeterminate: false }
+  if (targetLevel === 'distrik') {
+    const childResorts = (context.allResorts || []).filter((r) => String(r.idInduk) === sId).map((r) => String(r.id))
+    const childHurias = (context.allHurias || []).filter((h) => {
+      const r = findResort(h.idInduk)
+      return r && String(r.idInduk) === sId
+    }).map((h) => String(h.id))
+    currentState = getEntityCheckboxState('distrik', sId, selected, {
+      childIds: childResorts,
+      descendantHuriaIds: childHurias,
+    })
+  } else if (targetLevel === 'resort') {
+    const r = findResort(sId)
+    const pDistrikId = r?.idInduk ? String(r.idInduk) : ''
+    const childHurias = (context.allHurias || []).filter((h) => String(h.idInduk) === sId).map((h) => String(h.id))
+    currentState = getEntityCheckboxState('resort', sId, selected, {
+      parentId: pDistrikId,
+      childIds: childHurias,
+    })
+  } else if (targetLevel === 'huria') {
+    const h = findHuria(sId)
+    const pResortId = h?.idInduk ? String(h.idInduk) : ''
+    const r = findResort(pResortId)
+    const gDistrikId = r?.idInduk ? String(r.idInduk) : ''
+    currentState = getEntityCheckboxState('huria', sId, selected, {
+      parentId: pResortId,
+      grandparentId: gDistrikId,
+    })
+  }
+
+  // JIKA SEDANG CHECKED -> MAKA AKSI ADALAH UNCHECK (MEMBATALKAN)
+  if (currentState.checked) {
+    if (targetLevel === 'distrik') {
+      if (compLevel === 'distrik') {
+        const nextDistrik = (selected.distrik || []).filter((x) => String(x) !== sId)
+        return {
+          nextSelection: { distrik: nextDistrik, resort: [], huria: [] },
+          blocked: false,
+        }
+      }
+      const childResorts = new Set((context.allResorts || []).filter((r) => String(r.idInduk) === sId).map((r) => String(r.id)))
+      const childHurias = new Set((context.allHurias || []).filter((h) => {
+        const r = findResort(h.idInduk)
+        return r && String(r.idInduk) === sId
+      }).map((h) => String(h.id)))
+
+      const nextResort = (selected.resort || []).filter((rId) => !childResorts.has(String(rId)))
+      const nextHuria = (selected.huria || []).filter((hId) => !childHurias.has(String(hId)))
+      const nextDistrik = (selected.distrik || []).filter((dId) => String(dId) !== sId)
+
+      return {
+        nextSelection: { distrik: nextDistrik, resort: nextResort, huria: nextHuria },
+        blocked: false,
+      }
+    }
+
+    if (targetLevel === 'resort') {
+      const r = findResort(sId)
+      const pDistrikId = r?.idInduk ? String(r.idInduk) : ''
+
+      if (compLevel === 'resort') {
+        const nextResort = (selected.resort || []).filter((x) => String(x) !== sId)
+        if (nextResort.length === 0) {
+          return { nextSelection: { distrik: [], resort: [], huria: [] }, blocked: false }
+        }
+        const remResorts = (context.allResorts || []).filter((x) => nextResort.includes(String(x.id)))
+        const remDistriks = Array.from(new Set(remResorts.map((x) => String(x.idInduk)).filter(Boolean)))
+        return {
+          nextSelection: { distrik: remDistriks, resort: nextResort, huria: [] },
+          blocked: false,
+        }
+      }
+
+      if (compLevel === 'distrik') {
+        const siblingResorts = (context.allResorts || []).filter((x) => String(x.idInduk) === pDistrikId).map((x) => String(x.id))
+        const remainingResorts = siblingResorts.filter((rId) => rId !== sId)
+        return {
+          nextSelection: {
+            distrik: remainingResorts.length > 0 ? [pDistrikId] : [],
+            resort: remainingResorts,
+            huria: [],
+          },
+          blocked: false,
+        }
+      }
+
+      if (compLevel === 'huria') {
+        const childHurias = new Set((context.allHurias || []).filter((h) => String(h.idInduk) === sId).map((h) => String(h.id)))
+        const nextHuria = (selected.huria || []).filter((hId) => !childHurias.has(String(hId)))
+        if (nextHuria.length === 0) {
+          return { nextSelection: { distrik: [], resort: [], huria: [] }, blocked: false }
+        }
+        return {
+          nextSelection: { ...selected, huria: nextHuria },
+          blocked: false,
+        }
+      }
+    }
+
+    if (targetLevel === 'huria') {
+      const h = findHuria(sId)
+      const pResortId = h?.idInduk ? String(h.idInduk) : ''
+      const r = findResort(pResortId)
+      const gDistrikId = r?.idInduk ? String(r.idInduk) : ''
+
+      if (compLevel === 'huria') {
+        const nextHuria = (selected.huria || []).filter((x) => String(x) !== sId)
+        if (nextHuria.length === 0) {
+          return { nextSelection: { distrik: [], resort: [], huria: [] }, blocked: false }
+        }
+        return {
+          nextSelection: { ...selected, huria: nextHuria },
+          blocked: false,
+        }
+      }
+
+      if (compLevel === 'resort') {
+        const siblingHurias = (context.allHurias || []).filter((x) => String(x.idInduk) === pResortId).map((x) => String(x.id))
+        const remainingHurias = siblingHurias.filter((hId) => hId !== sId)
+        return {
+          nextSelection: {
+            distrik: gDistrikId ? [gDistrikId] : [],
+            resort: pResortId ? [pResortId] : [],
+            huria: remainingHurias,
+          },
+          blocked: false,
+        }
+      }
+
+      if (compLevel === 'distrik') {
+        const distrikHurias = (context.allHurias || []).filter((x) => {
+          const res = findResort(x.idInduk)
+          return res && String(res.idInduk) === gDistrikId
+        }).map((x) => String(x.id))
+        const remainingHurias = distrikHurias.filter((hId) => hId !== sId)
+        const resortsInD = (context.allResorts || []).filter((x) => String(x.idInduk) === gDistrikId).map((x) => String(x.id))
+        return {
+          nextSelection: {
+            distrik: gDistrikId ? [gDistrikId] : [],
+            resort: resortsInD,
+            huria: remainingHurias,
+          },
+          blocked: false,
+        }
+      }
+    }
+  }
+
+  // JIKA BELUM CHECKED ATAU INDETERMINATE -> MAKA AKSI ADALAH CHECK (MEMILIH)
+  if (targetLevel === 'distrik') {
+    let nextDistrik = compLevel === 'distrik' ? [...(selected.distrik || []).map(String)] : []
+    if (!nextDistrik.includes(sId)) {
+      if (nextDistrik.length >= max) {
+        return {
+          nextSelection: selected,
+          blocked: true,
+          reason: `Maksimal ${max} item per perbandingan pada level ini.`,
+        }
+      }
+      nextDistrik.push(sId)
+    }
+    return {
+      nextSelection: { distrik: nextDistrik, resort: [], huria: [] },
+      blocked: false,
+    }
+  }
+
+  if (targetLevel === 'resort') {
+    const r = findResort(sId)
+    const pDistrikId = r?.idInduk ? String(r.idInduk) : ''
+
+    let nextResort = compLevel === 'resort' ? [...(selected.resort || []).map(String)] : []
+    if (!nextResort.includes(sId)) {
+      if (nextResort.length >= max) {
+        return {
+          nextSelection: selected,
+          blocked: true,
+          reason: `Maksimal ${max} item per perbandingan pada level ini.`,
+        }
+      }
+      nextResort.push(sId)
+    }
+    const parentDistriks = Array.from(new Set([
+      ...(compLevel === 'resort' ? (selected.distrik || []).map(String) : []),
+      pDistrikId,
+    ])).filter(Boolean)
+
+    return {
+      nextSelection: { distrik: parentDistriks, resort: nextResort, huria: [] },
+      blocked: false,
+    }
+  }
+
+  if (targetLevel === 'huria') {
+    const h = findHuria(sId)
+    const pResortId = h?.idInduk ? String(h.idInduk) : ''
+    const r = findResort(pResortId)
+    const gDistrikId = r?.idInduk ? String(r.idInduk) : ''
+
+    let nextHuria = compLevel === 'huria' ? [...(selected.huria || []).map(String)] : []
+    if (!nextHuria.includes(sId)) {
+      if (nextHuria.length >= max) {
+        return {
+          nextSelection: selected,
+          blocked: true,
+          reason: `Maksimal ${max} item per perbandingan pada level ini.`,
+        }
+      }
+      nextHuria.push(sId)
+    }
+
+    const parentDistriks = Array.from(new Set([
+      ...(compLevel === 'huria' ? (selected.distrik || []).map(String) : []),
+      gDistrikId,
+    ])).filter(Boolean)
+
+    const parentResorts = Array.from(new Set([
+      ...(compLevel === 'huria' ? (selected.resort || []).map(String) : []),
+      pResortId,
+    ])).filter(Boolean)
+
+    return {
+      nextSelection: { distrik: parentDistriks, resort: parentResorts, huria: nextHuria },
+      blocked: false,
+    }
+  }
+
+  return { nextSelection: selected, blocked: false }
+}
+
