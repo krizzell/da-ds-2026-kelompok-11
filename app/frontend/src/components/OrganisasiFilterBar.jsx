@@ -27,18 +27,30 @@ import {
 import { FilterSummary } from './FilterSummary'
 import { dedupeOrganisasiOptions, getOrganisasiOptions } from '../api/organisasiApi'
 import { getResortList, getHuriaList } from '../api/masterWilayahApi'
+import {
+  getEntityCheckboxState,
+  toggleHierarchyEntity,
+} from '../lib/organisasiFilter'
 
 // Jeda debounce hover (80ms) agar gerakan kursor cepat tidak memicu layout shift mendadak,
 // namun langsung responsif saat kursor diarahkan ke baris target.
 const HOVER_EXPAND_DELAY_MS = 80
 
 // Checkbox kustom ramah brand token HKBP
-function CustomCheckbox({ checked, onChange, disabled, id }) {
+function CustomCheckbox({
+  checked,
+  indeterminate = false,
+  onChange,
+  disabled,
+  id
+}) {
   return (
     <button
       type="button"
       id={id}
       disabled={disabled}
+      role="checkbox"
+      aria-checked={indeterminate ? 'mixed' : checked}
       onClick={(e) => {
         e.stopPropagation()
         if (!disabled && onChange) onChange(!checked)
@@ -48,10 +60,16 @@ function CustomCheckbox({ checked, onChange, disabled, id }) {
       } ${
         checked
           ? 'bg-primary border-primary text-white shadow-2xs'
+          : indeterminate
+          ? 'bg-primary-50 border-primary text-primary shadow-2xs'
           : 'border-line bg-surface hover:border-primary-300 hover:bg-primary-50/50'
       }`}
     >
-      {checked && <Check className="w-3 h-3 text-white stroke-[2.5]" />}
+      {indeterminate ? (
+        <span className="w-2 h-0.5 rounded-full bg-primary" />
+      ) : checked ? (
+        <Check className="w-3 h-3 text-white stroke-[2.5]" />
+      ) : null}
     </button>
   )
 }
@@ -69,7 +87,7 @@ export function OrganisasiFilterBar({ filterState }) {
     locks,
     periode,
     setPeriode,
-    setSelected,
+    setSelection,
     reset,
     addOptions,
   } = filterState
@@ -450,71 +468,74 @@ export function OrganisasiFilterBar({ filterState }) {
     }
   }, [q, distrikList, allResorts])
 
-  // Toggle seleksi checkbox per level
+  // Mengatur pemilihan Distrik, Resort, dan Huria
   const handleToggle = (lvl, id) => {
     if (locks[lvl]) return
     const sId = String(id)
-    const current = selected[lvl] || []
 
-    if (current.includes(sId)) {
-      // Uncheck
-      setSelected(
-        lvl,
-        current.filter((item) => String(item) !== sId)
-      )
-      setLimitWarning('')
-    } else {
-      // Check (dengan validasi batas 6 item)
-      if (current.length >= maxSelected) {
-        setLimitWarning(`Maksimal ${maxSelected} item per perbandingan pada level ini.`)
-        setTimeout(() => setLimitWarning(''), 4000)
-        return
-      }
+    const result = toggleHierarchyEntity(
+      lvl,
+      sId,
+      selected,
+      {
+        allResorts,
+        allHurias,
+      },
+      maxSelected
+    )
 
-      // Pastikan induk juga terdaftar jika turunan dipilih agar tidak kena prune
-      if (lvl === 'huria') {
-        const huriaItem = (allHurias || []).find((h) => String(h.id) === sId)
-        if (huriaItem && huriaItem.idInduk) {
-          const resortId = String(huriaItem.idInduk)
-          if (!selected.resort.includes(resortId)) {
-            setSelected('resort', [...(selected.resort || []), resortId])
-          }
-          const resortItem = (allResorts || []).find((r) => String(r.id) === resortId)
-          if (resortItem && resortItem.idInduk) {
-            const distrikId = String(resortItem.idInduk)
-            if (!selected.distrik.includes(distrikId)) {
-              setSelected('distrik', [...(selected.distrik || []), distrikId])
-            }
-          }
-        }
-      } else if (lvl === 'resort') {
-        const resortItem = (allResorts || []).find((r) => String(r.id) === sId)
-        if (resortItem && resortItem.idInduk) {
-          const distrikId = String(resortItem.idInduk)
-          if (!selected.distrik.includes(distrikId)) {
-            setSelected('distrik', [...(selected.distrik || []), distrikId])
-          }
-        }
-      }
+    if (result.blocked) {
+      setLimitWarning(result.reason || `Maksimal ${maxSelected} item per perbandingan pada level ini.`)
+      setTimeout(() => setLimitWarning(''), 4000)
+      return
+    }
 
-      setSelected(lvl, [...current, sId])
-      setLimitWarning('')
+    setSelection(result.nextSelection)
+    setLimitWarning('')
 
-      // Auto-buka anaknya jika dicentang
-      if (lvl === 'distrik') {
-        setExpandedDistriks((prev) => new Set([...prev, sId]))
-        fetchChildData('distrik', sId)
-      } else if (lvl === 'resort') {
-        setExpandedResorts((prev) => new Set([...prev, sId]))
-        fetchChildData('resort', sId)
-      }
+    if (lvl === 'distrik') {
+      setExpandedDistriks((prev) => new Set([...prev, sId]))
+      fetchChildData('distrik', sId)
+    } else if (lvl === 'resort') {
+      setExpandedResorts((prev) => new Set([...prev, sId]))
+      fetchChildData('resort', sId)
     }
   }
 
   // Hapus item dari chip ringkasan
   const handleRemoveChip = (lvl, id) => {
-    const current = selected[lvl] || []
-    setSelected(lvl, current.filter((item) => String(item) !== String(id)))
+    const sId = String(id)
+    const current = (selected[lvl] || []).map(String)
+    const updated = current.filter((item) => item !== sId)
+    if (updated.length === 0) {
+      setSelection({ distrik: [], resort: [], huria: [] })
+    } else {
+      if (lvl === 'huria') {
+        const remainingHuriaItems = (allHurias || []).filter((h) => updated.includes(String(h.id)))
+        const remainingResortIds = Array.from(new Set(remainingHuriaItems.map((h) => String(h.idInduk)).filter(Boolean)))
+        const remainingResortItems = (allResorts || []).filter((r) => remainingResortIds.includes(String(r.id)))
+        const remainingDistrikIds = Array.from(new Set(remainingResortItems.map((r) => String(r.idInduk)).filter(Boolean)))
+        setSelection({
+          distrik: remainingDistrikIds,
+          resort: remainingResortIds,
+          huria: updated,
+        })
+      } else if (lvl === 'resort') {
+        const remainingResortItems = (allResorts || []).filter((r) => updated.includes(String(r.id)))
+        const remainingDistrikIds = Array.from(new Set(remainingResortItems.map((r) => String(r.idInduk)).filter(Boolean)))
+        setSelection({
+          distrik: remainingDistrikIds,
+          resort: updated,
+          huria: [],
+        })
+      } else {
+        setSelection({
+          distrik: updated,
+          resort: [],
+          huria: [],
+        })
+      }
+    }
   }
 
   return (
@@ -617,9 +638,7 @@ export function OrganisasiFilterBar({ filterState }) {
               <button
                 type="button"
                 onClick={() => {
-                  setSelected('distrik', [])
-                  setSelected('resort', [])
-                  setSelected('huria', [])
+                  setSelection({ distrik: [], resort: [], huria: [] })
                 }}
                 className="px-2.5 py-1 rounded-lg text-danger hover:bg-danger/10 font-semibold text-[11px] transition-colors cursor-pointer ml-1"
               >
@@ -638,9 +657,20 @@ export function OrganisasiFilterBar({ filterState }) {
           ) : (
             distrikList.map((d) => {
               const dId = String(d.id)
-              const isDistrikChecked = selected.distrik.includes(dId)
-              const isDistrikExpanded = expandedDistriks.has(dId)
               const resortsForDistrik = resortsByDistrik.get(dId) || []
+              const childResortIds = resortsForDistrik.map((r) => String(r.id))
+              const childHuriaIds = []
+              resortsForDistrik.forEach((r) => {
+                const rHurias = huriasByResort.get(String(r.id)) || []
+                rHurias.forEach((h) => childHuriaIds.push(String(h.id)))
+              })
+              const distrikCheckbox = getEntityCheckboxState('distrik', dId, selected, {
+                childIds: childResortIds,
+                descendantHuriaIds: childHuriaIds,
+              })
+              const isDistrikChecked = distrikCheckbox.checked
+              const isDistrikIndeterminate = distrikCheckbox.indeterminate
+              const isDistrikExpanded = expandedDistriks.has(dId)
               const hasResorts = resortsForDistrik.length > 0
               const isResortsLoading = Boolean(loadingResorts[dId])
 
@@ -656,6 +686,8 @@ export function OrganisasiFilterBar({ filterState }) {
                     className={`group flex items-center justify-between px-4 py-3 cursor-pointer transition-colors ${
                       isDistrikChecked
                         ? 'bg-primary-50/70 text-primary font-bold'
+                        : isDistrikIndeterminate
+                        ? 'bg-primary-50/30 text-ink font-semibold'
                         : 'bg-surface hover:bg-primary-50/30 text-ink'
                     }`}
                   >
@@ -677,6 +709,7 @@ export function OrganisasiFilterBar({ filterState }) {
                       {/* Checkbox Distrik */}
                       <CustomCheckbox
                         checked={isDistrikChecked}
+                        indeterminate={isDistrikIndeterminate}
                         disabled={locks.distrik}
                         id={`cb-distrik-${d.id}`}
                         onChange={() => handleToggle('distrik', d.id)}
@@ -723,9 +756,15 @@ export function OrganisasiFilterBar({ filterState }) {
                       ) : (
                         resortsForDistrik.map((r) => {
                           const rId = String(r.id)
-                          const isResortChecked = selected.resort.includes(rId)
-                          const isResortExpanded = expandedResorts.has(rId)
                           const huriasForResort = huriasByResort.get(rId) || []
+                          const childHuriaIds = huriasForResort.map((h) => String(h.id))
+                          const resortCheckbox = getEntityCheckboxState('resort', rId, selected, {
+                            parentId: dId,
+                            childIds: childHuriaIds,
+                          })
+                          const isResortChecked = resortCheckbox.checked
+                          const isResortIndeterminate = resortCheckbox.indeterminate
+                          const isResortExpanded = expandedResorts.has(rId)
                           const hasHurias = huriasForResort.length > 0
                           const isHuriasLoading = Boolean(loadingHurias[rId])
 
@@ -739,6 +778,8 @@ export function OrganisasiFilterBar({ filterState }) {
                                 className={`group flex items-center justify-between px-4 pl-11 py-2.5 cursor-pointer transition-colors ${
                                   isResortChecked
                                     ? 'bg-indigo-50/60 text-indigo-950 font-semibold'
+                                    : isResortIndeterminate
+                                    ? 'bg-indigo-50/30 text-ink font-medium'
                                     : 'hover:bg-indigo-50/30 text-ink'
                                 }`}
                               >
@@ -760,6 +801,7 @@ export function OrganisasiFilterBar({ filterState }) {
                                   {/* Checkbox Resort */}
                                   <CustomCheckbox
                                     checked={isResortChecked}
+                                    indeterminate={isResortIndeterminate}
                                     disabled={locks.resort}
                                     id={`cb-resort-${r.id}`}
                                     onChange={() => handleToggle('resort', r.id)}
@@ -806,7 +848,11 @@ export function OrganisasiFilterBar({ filterState }) {
                                   ) : (
                                     huriasForResort.map((h) => {
                                       const hId = String(h.id)
-                                      const isHuriaChecked = selected.huria.includes(hId)
+                                      const huriaCheckbox = getEntityCheckboxState('huria', hId, selected, {
+                                        parentId: rId,
+                                        grandparentId: dId,
+                                      })
+                                      const isHuriaChecked = huriaCheckbox.checked
 
                                       return (
                                         <div

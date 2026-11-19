@@ -219,6 +219,20 @@ export function useOrganisasiFilter({ user = null, liveWilayahData = null, initi
   }, [selected, periode])
 
   // 10. Handler Manipulasi Filter
+  const setSelection = useCallback(
+    (newSelection) => {
+      setSelectedState((prev) => {
+        const next = {
+          distrik: Array.isArray(newSelection?.distrik) ? newSelection.distrik : prev.distrik,
+          resort: Array.isArray(newSelection?.resort) ? newSelection.resort : prev.resort,
+          huria: Array.isArray(newSelection?.huria) ? newSelection.huria : prev.huria,
+        }
+        return pruneSelection(next, options)
+      })
+    },
+    [options]
+  )
+
   const setSelected = useCallback(
     (lvl, ids) => {
       if (locks[lvl]) return
@@ -343,6 +357,7 @@ export function useOrganisasiFilter({ user = null, liveWilayahData = null, initi
     periode,
     setPeriode,
     setSelected,
+    setSelection,
     toggleGroup,
     pickTop,
     reset,

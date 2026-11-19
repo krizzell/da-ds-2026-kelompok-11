@@ -11,6 +11,8 @@ import {
   toQuery,
   fromQuery,
   pickTop,
+  getEntityCheckboxState,
+  toggleHierarchyEntity,
 } from './organisasiFilter'
 
 // Mock Data Hierarki Wilayah HKBP dengan nama kembar untuk pengujian kasus tepi
@@ -345,3 +347,304 @@ describe('organisasiFilter - pickTop', () => {
     expect(result).toHaveLength(6)
   })
 })
+
+describe('organisasiFilter - getEntityCheckboxState', () => {
+  const hierarchyD1 = {
+    childIds: ['R-1.1', 'R-1.2'],
+    descendantHuriaIds: ['H-1.1.1', 'H-1.1.2'],
+  }
+  const hierarchyR11 = {
+    parentId: 'D-1',
+    childIds: ['H-1.1.1', 'H-1.1.2'],
+  }
+  const hierarchyH111 = {
+    parentId: 'R-1.1',
+    grandparentId: 'D-1',
+  }
+
+  it('level distrik: distrik terpilih membuat seluruh resort dan huria di bawahnya checked', () => {
+    const selected = { distrik: ['D-1'], resort: [], huria: [] }
+
+    // Distrik D-1 checked
+    expect(getEntityCheckboxState('distrik', 'D-1', selected, hierarchyD1)).toEqual({
+      checked: true,
+      indeterminate: false,
+    })
+    // Resort R-1.1 di bawah D-1 otomatis checked
+    expect(getEntityCheckboxState('resort', 'R-1.1', selected, hierarchyR11)).toEqual({
+      checked: true,
+      indeterminate: false,
+    })
+    // Huria H-1.1.1 di bawah D-1 otomatis checked
+    expect(getEntityCheckboxState('huria', 'H-1.1.1', selected, hierarchyH111)).toEqual({
+      checked: true,
+      indeterminate: false,
+    })
+    // Wilayah di distrik lain (D-2) unchecked
+    expect(getEntityCheckboxState('distrik', 'D-2', selected)).toEqual({
+      checked: false,
+      indeterminate: false,
+    })
+  })
+
+  it('level resort: resort terpilih membuat huria di bawahnya checked dan induk distrik indeterminate jika sebagian', () => {
+    const selected = { distrik: ['D-1'], resort: ['R-1.1'], huria: [] }
+
+    // Resort R-1.1 checked
+    expect(getEntityCheckboxState('resort', 'R-1.1', selected, hierarchyR11)).toEqual({
+      checked: true,
+      indeterminate: false,
+    })
+    // Huria H-1.1.1 di bawah R-1.1 otomatis checked
+    expect(getEntityCheckboxState('huria', 'H-1.1.1', selected, hierarchyH111)).toEqual({
+      checked: true,
+      indeterminate: false,
+    })
+    // Distrik D-1 memiliki 2 resort (R-1.1 dan R-1.2), hanya R-1.1 terpilih -> indeterminate
+    expect(getEntityCheckboxState('distrik', 'D-1', selected, hierarchyD1)).toEqual({
+      checked: false,
+      indeterminate: true,
+    })
+    // Resort R-1.2 unchecked
+    expect(getEntityCheckboxState('resort', 'R-1.2', selected, { parentId: 'D-1', childIds: [] })).toEqual({
+      checked: false,
+      indeterminate: false,
+    })
+  })
+
+  it('level resort: induk distrik checked jika seluruh resort di bawahnya terpilih', () => {
+    const selected = { distrik: ['D-1'], resort: ['R-1.1', 'R-1.2'], huria: [] }
+
+    expect(getEntityCheckboxState('distrik', 'D-1', selected, hierarchyD1)).toEqual({
+      checked: true,
+      indeterminate: false,
+    })
+  })
+
+  it('level huria: hanya huria terpilih yang checked, induk resort dan kakek distrik indeterminate', () => {
+    const selected = { distrik: ['D-1'], resort: ['R-1.1'], huria: ['H-1.1.1'] }
+
+    // Huria H-1.1.1 checked
+    expect(getEntityCheckboxState('huria', 'H-1.1.1', selected, hierarchyH111)).toEqual({
+      checked: true,
+      indeterminate: false,
+    })
+    // Huria H-1.1.2 unchecked
+    expect(getEntityCheckboxState('huria', 'H-1.1.2', selected, { parentId: 'R-1.1', grandparentId: 'D-1' })).toEqual({
+      checked: false,
+      indeterminate: false,
+    })
+    // Resort R-1.1 punya 2 huria, hanya 1 terpilih -> indeterminate
+    expect(getEntityCheckboxState('resort', 'R-1.1', selected, hierarchyR11)).toEqual({
+      checked: false,
+      indeterminate: true,
+    })
+    // Distrik D-1 -> indeterminate
+    expect(getEntityCheckboxState('distrik', 'D-1', selected, hierarchyD1)).toEqual({
+      checked: false,
+      indeterminate: true,
+    })
+  })
+
+  it('level huria: induk resort checked jika seluruh huria di bawahnya terpilih', () => {
+    const selected = { distrik: ['D-1'], resort: ['R-1.1'], huria: ['H-1.1.1', 'H-1.1.2'] }
+
+    expect(getEntityCheckboxState('resort', 'R-1.1', selected, hierarchyR11)).toEqual({
+      checked: true,
+      indeterminate: false,
+    })
+  })
+})
+
+describe('organisasiFilter - toggleHierarchyEntity (Pemilihan 1 & 2 Distrik, 1 & 2 Resort, 1 & 2 HKBP)', () => {
+  const context = {
+    allResorts: mockOptions.resort,
+    allHurias: mockOptions.huria,
+  }
+
+  it('1 Distrik: memilih 1 distrik menghasilkan 1 entitas pembanding level distrik', () => {
+    const res = toggleHierarchyEntity('distrik', 'D-1', EMPTY_SELECTION, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection).toEqual({
+      distrik: ['D-1'],
+      resort: [],
+      huria: [],
+    })
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('distrik')
+  })
+
+  it('2 Distrik: memilih 2 distrik menghasilkan 2 entitas pembanding level distrik', () => {
+    const current = { distrik: ['D-1'], resort: [], huria: [] }
+    const res = toggleHierarchyEntity('distrik', 'D-2', current, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection).toEqual({
+      distrik: ['D-1', 'D-2'],
+      resort: [],
+      huria: [],
+    })
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('distrik')
+    expect(res.nextSelection.distrik).toHaveLength(2)
+  })
+
+  it('1 Resort: memilih 1 resort menghasilkan 1 entitas pembanding level resort', () => {
+    const res = toggleHierarchyEntity('resort', 'R-1.1', EMPTY_SELECTION, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection.resort).toEqual(['R-1.1'])
+    expect(res.nextSelection.huria).toEqual([])
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('resort')
+  })
+
+  it('2 Resort: memilih 2 resort menghasilkan 2 entitas pembanding level resort', () => {
+    const current = { distrik: ['D-1'], resort: ['R-1.1'], huria: [] }
+    const res = toggleHierarchyEntity('resort', 'R-1.2', current, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection.resort).toEqual(['R-1.1', 'R-1.2'])
+    expect(res.nextSelection.huria).toEqual([])
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('resort')
+    expect(res.nextSelection.resort).toHaveLength(2)
+  })
+
+  it('1 HKBP: memilih 1 huria menghasilkan 1 entitas pembanding level huria', () => {
+    const res = toggleHierarchyEntity('huria', 'H-1.1.1', EMPTY_SELECTION, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection.huria).toEqual(['H-1.1.1'])
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('huria')
+  })
+
+  it('2 HKBP: memilih 2 huria menghasilkan 2 entitas pembanding level huria', () => {
+    const current = { distrik: ['D-1'], resort: ['R-1.1'], huria: ['H-1.1.1'] }
+    const res = toggleHierarchyEntity('huria', 'H-1.1.2', current, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection.huria).toEqual(['H-1.1.1', 'H-1.1.2'])
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('huria')
+    expect(res.nextSelection.huria).toHaveLength(2)
+  })
+
+  it('pembatalan: uncheck 1 dari 2 HKBP menyisakan 1 HKBP pembanding', () => {
+    const current = { distrik: ['D-1'], resort: ['R-1.1'], huria: ['H-1.1.1', 'H-1.1.2'] }
+    const res = toggleHierarchyEntity('huria', 'H-1.1.2', current, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection.huria).toEqual(['H-1.1.1'])
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('huria')
+  })
+
+  it('pembatalan: uncheck 1 dari 2 Resort menyisakan 1 Resort pembanding', () => {
+    const current = { distrik: ['D-1'], resort: ['R-1.1', 'R-1.2'], huria: [] }
+    const res = toggleHierarchyEntity('resort', 'R-1.2', current, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection.resort).toEqual(['R-1.1'])
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('resort')
+  })
+
+  it('pembatalan: uncheck 1 dari 2 Distrik menyisakan 1 Distrik pembanding', () => {
+    const current = { distrik: ['D-1', 'D-2'], resort: [], huria: [] }
+    const res = toggleHierarchyEntity('distrik', 'D-2', current, context)
+    expect(res.blocked).toBe(false)
+    expect(res.nextSelection.distrik).toEqual(['D-1'])
+    expect(resolveComparisonLevel(res.nextSelection)).toBe('distrik')
+  })
+})
+
+describe('organisasiFilter - Agregasi data dan pencegahan penghitungan ganda', () => {
+  it('agregasi distrik menjumlahkan seluruh huria di bawahnya tanpa duplikasi', () => {
+    // Distrik I Silindung punya R-1.1 (Pearaja) dengan 2 huria: H-1.1.1 (30jt) dan H-1.1.2 (20jt)
+    const huriasUnderD1 = mockOptions.huria.filter((h) => {
+      const r = mockOptions.resort.find((res) => res.id === h.idInduk)
+      return r && r.idInduk === 'D-1'
+    })
+    const totalD1 = huriasUnderD1.reduce((sum, h) => sum + h.total, 0)
+    expect(totalD1).toBe(50000000) // 30jt + 20jt
+  })
+
+  it('agregasi resort menjumlahkan seluruh huria di dalam resort tersebut saja', () => {
+    const huriasUnderR11 = mockOptions.huria.filter((h) => h.idInduk === 'R-1.1')
+    const totalR11 = huriasUnderR11.reduce((sum, h) => sum + h.total, 0)
+    expect(totalR11).toBe(50000000) // 30jt + 20jt
+  })
+
+  it('agregasi huria hanya menggunakan data huria tersebut', () => {
+    const h111 = mockOptions.huria.find((h) => h.id === 'H-1.1.1')
+    expect(h111.total).toBe(30000000)
+  })
+
+  it('pembentukan seri grafik Studio Visualisasi sesuai entitas yang dipilih langsung', () => {
+    // Helper simulasi pemetaan entitas StudioVisualisasi
+    const buildComparedEntities = (selected) => {
+      const level = resolveComparisonLevel(selected)
+      if (!level) return []
+      const items = (selected[level] || []).map((id) => {
+        const opt = mockOptions[level].find((o) => o.id === id)
+        return { id, nama: opt?.nama || id }
+      })
+
+      return items.map((item) => {
+        let matchedHurias = []
+        if (level === 'huria') {
+          matchedHurias = mockOptions.huria.filter((h) => h.id === item.id)
+        } else if (level === 'resort') {
+          matchedHurias = mockOptions.huria.filter((h) => h.idInduk === item.id)
+        } else {
+          matchedHurias = mockOptions.huria.filter((h) => {
+            const r = mockOptions.resort.find((res) => res.id === h.idInduk)
+            return r && r.idInduk === item.id
+          })
+        }
+        return {
+          id: item.id,
+          name: item.nama,
+          churches: matchedHurias,
+          total: matchedHurias.reduce((sum, h) => sum + (h.total || 0), 0),
+        }
+      })
+    }
+
+    // 1. Memilih 1 Distrik -> 1 seri grafik (akumulasi seluruh HKBP di distrik tersebut)
+    const entities1D = buildComparedEntities({ distrik: ['D-1'], resort: [], huria: [] })
+    expect(entities1D).toHaveLength(1)
+    expect(entities1D[0].name).toBe('Distrik I Silindung')
+    expect(entities1D[0].churches).toHaveLength(2)
+    expect(entities1D[0].total).toBe(50000000) // 30jt + 20jt
+
+    // 2. Memilih 2 Distrik -> 2 seri grafik (komparasi akumulasi masing-masing distrik)
+    const entities2D = buildComparedEntities({ distrik: ['D-1', 'D-2'], resort: [], huria: [] })
+    expect(entities2D).toHaveLength(2)
+    expect(entities2D[0].name).toBe('Distrik I Silindung')
+    expect(entities2D[0].total).toBe(50000000) // D-1: H-1.1.1 (30jt) + H-1.1.2 (20jt)
+    expect(entities2D[1].name).toBe('Distrik II Humbang')
+    expect(entities2D[1].total).toBe(60000000) // D-2: H-2.1.1 (45jt) + H-2.1.2 (15jt)
+    // Total akumulasi tidak menghitung ganda
+    const totalAll2D = entities2D.reduce((sum, e) => sum + e.total, 0)
+    expect(totalAll2D).toBe(110000000)
+
+    // 3. Memilih 1 Resort -> 1 seri grafik (akumulasi seluruh HKBP di resort tersebut)
+    const entities1R = buildComparedEntities({ distrik: ['D-1'], resort: ['R-1.1'], huria: [] })
+    expect(entities1R).toHaveLength(1)
+    expect(entities1R[0].name).toBe('Resort Pearaja')
+    expect(entities1R[0].churches).toHaveLength(2)
+    expect(entities1R[0].total).toBe(50000000)
+
+    // 4. Memilih 2 Resort -> 2 seri grafik (komparasi masing-masing resort)
+    const entities2R = buildComparedEntities({ distrik: ['D-1', 'D-2'], resort: ['R-1.1', 'R-2.1'], huria: [] })
+    expect(entities2R).toHaveLength(2)
+    expect(entities2R[0].name).toBe('Resort Pearaja')
+    expect(entities2R[0].total).toBe(50000000)
+    expect(entities2R[1].name).toBe('Resort Dolok Sanggul')
+    expect(entities2R[1].total).toBe(60000000)
+
+    // 5. Memilih 1 HKBP -> 1 seri grafik (data HKBP tersebut saja)
+    const entities1H = buildComparedEntities({ distrik: ['D-1'], resort: ['R-1.1'], huria: ['H-1.1.1'] })
+    expect(entities1H).toHaveLength(1)
+    expect(entities1H[0].name).toBe('HKBP Pearaja')
+    expect(entities1H[0].churches).toHaveLength(1)
+    expect(entities1H[0].total).toBe(30000000)
+
+    // 6. Memilih 2 HKBP -> 2 seri grafik (komparasi masing-masing HKBP)
+    const entities2H = buildComparedEntities({ distrik: ['D-1'], resort: ['R-1.1'], huria: ['H-1.1.1', 'H-1.1.2'] })
+    expect(entities2H).toHaveLength(2)
+    expect(entities2H[0].name).toBe('HKBP Pearaja')
+    expect(entities2H[0].total).toBe(30000000)
+    expect(entities2H[1].name).toBe('HKBP Pardomuan')
+    expect(entities2H[1].total).toBe(20000000)
+  })
+})
+
