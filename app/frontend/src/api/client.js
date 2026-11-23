@@ -22,7 +22,7 @@ client.interceptors.response.use(
   (error) => {
     const status = error?.response?.status
     const url = error?.config?.url || ''
-    if (status === 401 && !url.includes('/auth/login') && typeof localStorage !== 'undefined') {
+    if (status === 401 && !url.includes('/auth/login') && !url.includes('/analytics/') && typeof localStorage !== 'undefined') {
       localStorage.removeItem('hkbp_token')
       localStorage.removeItem('hkbp_user')
       window.location.assign('/')

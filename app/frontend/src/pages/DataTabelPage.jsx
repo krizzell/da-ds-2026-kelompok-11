@@ -14,6 +14,8 @@ import {
   Building2,
   SlidersHorizontal,
   RotateCcw,
+  Filter,
+  X,
 } from 'lucide-react'
 import { formatRupiah, formatDate, exportToCSV, getISOWeek } from '../utils/formatters'
 import { HkCheckbox } from '../components/FilterControls'
@@ -119,6 +121,85 @@ const METRIC_PRESETS = {
   ],
 }
 
+// 3. DEFINISI KOLOM EKSPOR KUSTOM PER TABEL
+const EXPORT_COLUMNS_BY_TABLE = {
+  RingkasanHuria: [
+    { key: 'huria', label: 'Gereja (Huria)' },
+    { key: 'resort', label: 'Resort' },
+    { key: 'distrik', label: 'Distrik' },
+    { key: 'jumlahMinggu', label: 'Minggu' },
+    { key: 'avgPeleanPerMinggu', label: 'Rata-rata / Minggu' },
+    { key: 'totalPelean', label: 'Total Pelean' },
+    { key: 'totalPemasukan', label: 'Total Pemasukan' },
+    { key: 'totalSetoranPusat', label: 'Setoran Pusat' },
+    { key: 'avgKehadiran', label: 'Kehadiran (Rata²)' },
+    { key: 'kategori', label: 'Status Ambang' },
+  ],
+  PemasukanJemaat: [
+    { key: 'id', label: 'ID' },
+    { key: 'huria', label: 'Huria' },
+    { key: 'resort', label: 'Resort' },
+    { key: 'distrik', label: 'Distrik' },
+    { key: 'tanggal', label: 'Tanggal' },
+    { key: 'kategori', label: 'Kategori' },
+    { key: 'nominal', label: 'Nominal' },
+    { key: 'keterangan', label: 'Keterangan' },
+  ],
+  SesiIbadah: [
+    { key: 'id', label: 'ID' },
+    { key: 'huria', label: 'Huria' },
+    { key: 'distrik', label: 'Distrik' },
+    { key: 'namaSesi', label: 'Sesi Ibadah' },
+    { key: 'tanggal', label: 'Tanggal' },
+    { key: 'jumlahHadir', label: 'Kehadiran' },
+    { key: 'pelean1a', label: 'Pelean 1a' },
+    { key: 'pelean1b', label: 'Pelean 1b' },
+    { key: 'pelean2a', label: 'Pelean 2a' },
+    { key: 'pelean2b', label: 'Pelean 2b' },
+    { key: 'totalPelean', label: 'Total Pelean' },
+  ],
+  AlokasiTransaksi: [
+    { key: 'id', label: 'ID Alokasi' },
+    { key: 'huria', label: 'Huria' },
+    { key: 'distrik', label: 'Distrik' },
+    { key: 'idTransaksi', label: 'ID Transaksi' },
+    { key: 'peruntukan', label: 'Peruntukan' },
+    { key: 'nominal', label: 'Nominal' },
+    { key: 'tanggal', label: 'Tanggal' },
+  ],
+  SetoranPusat: [
+    { key: 'id', label: 'ID Setoran' },
+    { key: 'huria', label: 'Huria' },
+    { key: 'distrik', label: 'Distrik' },
+    { key: 'periode', label: 'Periode' },
+    { key: 'tanggalSetor', label: 'Tanggal Setor' },
+    { key: 'totalSetoran', label: 'Total Setoran' },
+    { key: 'keterangan', label: 'Keterangan' },
+  ],
+  RincianSetoranPusat: [
+    { key: 'id', label: 'ID Rincian' },
+    { key: 'huria', label: 'Huria' },
+    { key: 'distrik', label: 'Distrik' },
+    { key: 'idSetoran', label: 'ID Setoran' },
+    { key: 'idAlokasi', label: 'ID Alokasi' },
+    { key: 'nominalDilunasi', label: 'Nominal Dilunasi' },
+  ],
+  KategoriPemasukan: [
+    { key: 'id', label: 'ID Kategori' },
+    { key: 'huria', label: 'Huria' },
+    { key: 'distrik', label: 'Distrik' },
+    { key: 'namaKategori', label: 'Nama Kategori' },
+    { key: 'kategoriInduk', label: 'Kategori Induk' },
+  ],
+  Lunggu: [
+    { key: 'id', label: 'ID Lunggu' },
+    { key: 'huria', label: 'Huria' },
+    { key: 'distrik', label: 'Distrik' },
+    { key: 'namaLunggu', label: 'Nama Lunggu (Sektor)' },
+    { key: 'keterangan', label: 'Keterangan' },
+  ],
+}
+
 export const DataTabelPage = ({ wilayahData = [], filters }) => {
   const { user } = useAuth()
   const [selectedTable, setSelectedTable] = useState('RingkasanHuria')
@@ -128,6 +209,15 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
   const [selectedRows, setSelectedRows] = useState(new Set())
   const [isTableDropdownOpen, setIsTableDropdownOpen] = useState(false)
   const dropdownRef = useRef(null)
+
+  // State untuk Panel Ekspor Kustom (Kolom & Filter Tambahan)
+  const [isCustomExportOpen, setIsCustomExportOpen] = useState(false)
+  const customExportRef = useRef(null)
+  const [selectedExportColumns, setSelectedExportColumns] = useState(() =>
+    (EXPORT_COLUMNS_BY_TABLE.RingkasanHuria || []).map((c) => c.key)
+  )
+  const [exportDistrikFilter, setExportDistrikFilter] = useState('ALL')
+  const [exportScope, setExportScope] = useState('filtered') // 'filtered' | 'selected'
 
   // Metrik Keuangan yang sedang aktif difilter
   const [selectedMetric, setSelectedMetric] = useState('avgPeleanPerMinggu')
@@ -143,11 +233,14 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
   const [sortField, setSortField] = useState('avgPeleanPerMinggu')
   const [sortDirection, setSortDirection] = useState('desc') // 'asc' | 'desc'
 
-  // Close dropdown on outside click
+  // Close dropdown & custom export panel on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsTableDropdownOpen(false)
+      }
+      if (customExportRef.current && !customExportRef.current.contains(e.target)) {
+        setIsCustomExportOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -363,6 +456,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
                 id: item.IdTransaksi,
                 huria: h.NamaHuria,
                 resort: h.resortName,
+                distrik: h.distrikName || '-',
                 tanggal: item.Tanggal,
                 kategori: kat?.NamaKategori || item.IdKategori,
                 nominal: item.Nominal,
@@ -382,6 +476,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
               rows.push({
                 id: item.IdSesi,
                 huria: h.NamaHuria,
+                distrik: h.distrikName || '-',
                 namaSesi: item.NamaSesi,
                 tanggal: item.Tanggal,
                 jamMulai: item.JamMulai,
@@ -402,6 +497,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
             rows.push({
               id: item.IdAlokasi,
               huria: h.NamaHuria,
+              distrik: h.distrikName || '-',
               idTransaksi: item.IdTransaksi,
               peruntukan: item.Peruntukan,
               nominal: item.Nominal,
@@ -414,6 +510,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
               rows.push({
                 id: item.IdSetoran,
                 huria: h.NamaHuria,
+                distrik: h.distrikName || '-',
                 periode: item.Periode,
                 tanggalSetor: item.TanggalSetor,
                 totalSetoran: item.TotalSetoran,
@@ -426,6 +523,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
             rows.push({
               id: item.IdRincian,
               huria: h.NamaHuria,
+              distrik: h.distrikName || '-',
               idSetoran: item.IdSetoran,
               idAlokasi: item.IdAlokasi,
               nominalDilunasi: item.NominalDilunasi,
@@ -436,6 +534,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
             rows.push({
               id: item.IdKategori,
               huria: h.NamaHuria,
+              distrik: h.distrikName || '-',
               namaKategori: item.NamaKategori,
               kategoriInduk: item.IdKategoriInduk || '-',
             })
@@ -445,6 +544,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
             rows.push({
               id: item.IdLunggu,
               huria: h.NamaHuria,
+              distrik: h.distrikName || '-',
               namaLunggu: item.NamaLunggu,
               keterangan: item.Keterangan || '-',
             })
@@ -455,6 +555,23 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
 
     return rows
   }, [filteredHurias, selectedTable, filters, huriaFinancialMap])
+
+  // Daftar opsi Distrik unik untuk filter tambahan pada Ekspor Kustom
+  const availableExportDistriks = useMemo(() => {
+    const set = new Set()
+    filteredHurias.forEach((h) => {
+      if (h.distrikName) set.add(h.distrikName)
+    })
+    rawTableData.forEach((row) => {
+      if (row.distrik && row.distrik !== '-') set.add(row.distrik)
+    })
+    return Array.from(set).sort((a, b) => a.localeCompare(b, 'id', { numeric: true }))
+  }, [filteredHurias, rawTableData])
+
+  const currentExportColumns = useMemo(
+    () => EXPORT_COLUMNS_BY_TABLE[selectedTable] || [],
+    [selectedTable]
+  )
 
   const isAdmin = (user?.role || '').toLowerCase() === 'admin'
 
@@ -704,7 +821,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
             ) : isDesc ? (
               <ArrowDown className="w-3.5 h-3.5 text-primary stroke-[2.8]" />
             ) : (
-              <ArrowUpDown className="w-3 h-3 text-muted/50 group-hover:text-primary transition-colors" />
+              <ArrowUpDown className="w-3.5 h-3.5 text-muted/50 group-hover:text-primary transition-colors" />
             )}
           </span>
         </div>
@@ -718,6 +835,13 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
     setCurrentPage(1)
     setSelectedRows(new Set())
     setIsTableDropdownOpen(false)
+    setIsCustomExportOpen(false)
+
+    // Sinkronkan kolom ekspor kustom dengan tabel yang baru dipilih
+    const defaultCols = (EXPORT_COLUMNS_BY_TABLE[tableId] || []).map((c) => c.key)
+    setSelectedExportColumns(defaultCols)
+    setExportDistrikFilter('ALL')
+    setExportScope('filtered')
 
     // Set default metric & sort for this table
     const availableMetrics = TABLE_METRICS[tableId] || []
@@ -784,7 +908,7 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
     setSelectedRows(next)
   }
 
-  // Export to CSV
+  // Export to CSV bawaan (tidak diubah perilakunya agar tetap kompatibel)
   const handleExportCSV = () => {
     const dataToExport =
       selectedRows.size > 0
@@ -794,6 +918,66 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
       dataToExport,
       `tabel_${selectedTable}_${new Date().toISOString().substring(0, 10)}.csv`
     )
+  }
+
+  // Toggle kolom pada Ekspor Kustom
+  const toggleExportColumn = (colKey) => {
+    setSelectedExportColumns((prev) =>
+      prev.includes(colKey) ? prev.filter((k) => k !== colKey) : [...prev, colKey]
+    )
+  }
+
+  // Terapkan preset cepat kolom untuk RingkasanHuria (misalnya Total Pelean & Total Pemasukan)
+  const applyPeleanPemasukanPreset = () => {
+    const availableKeys = new Set(currentExportColumns.map((c) => c.key))
+    const presetCols = ['huria', 'distrik', 'totalPelean', 'totalPemasukan'].filter((k) =>
+      availableKeys.has(k)
+    )
+    if (presetCols.length > 0) {
+      setSelectedExportColumns(presetCols)
+    }
+  }
+
+  // Data baris yang akan diekspor secara kustom setelah filter Distrik & cakupan baris
+  const customExportCandidateRows = useMemo(() => {
+    let baseRows =
+      exportScope === 'selected' && selectedRows.size > 0
+        ? filteredData.filter((r) => selectedRows.has(r.id))
+        : filteredData
+
+    if (exportDistrikFilter !== 'ALL') {
+      baseRows = baseRows.filter((r) => r.distrik === exportDistrikFilter)
+    }
+
+    return baseRows
+  }, [filteredData, selectedRows, exportScope, exportDistrikFilter])
+
+  // Handler Ekspor CSV Kustom (hanya kolom & data terpilih)
+  const handleCustomExportCSV = () => {
+    if (selectedExportColumns.length === 0) return
+
+    const orderedColumns = currentExportColumns.filter((col) =>
+      selectedExportColumns.includes(col.key)
+    )
+
+    const shapedRows = customExportCandidateRows.map((row) => {
+      const obj = {}
+      orderedColumns.forEach((col) => {
+        obj[col.label] = row[col.key] ?? ''
+      })
+      return obj
+    })
+
+    const distrikSuffix =
+      exportDistrikFilter !== 'ALL'
+        ? `_${exportDistrikFilter.toLowerCase().replace(/[^a-z0-9]+/gi, '_')}`
+        : ''
+
+    exportToCSV(
+      shapedRows,
+      `tabel_${selectedTable}_kustom${distrikSuffix}_${new Date().toISOString().substring(0, 10)}.csv`
+    )
+    setIsCustomExportOpen(false)
   }
 
   const tableList = [
@@ -876,20 +1060,184 @@ export const DataTabelPage = ({ wilayahData = [], filters }) => {
               />
             </div>
 
-            {/* Export CSV Button */}
+            {/* Export CSV Button (Bawaan) */}
             <button
+              type="button"
               onClick={handleExportCSV}
               className="h-9 px-3 sm:px-3.5 rounded-full border border-line bg-surface text-ink text-xs font-semibold flex items-center gap-1.5 hover:bg-primary-50 hover:text-primary transition-colors cursor-pointer shrink-0"
+              title="Ekspor semua kolom dari data yang tampil/terpilih"
             >
               <Download className="w-3.5 h-3.5 text-muted" />
               <span>Ekspor CSV</span>
             </button>
 
+            {/* Tombol & Panel Ekspor Kustom (Kolom + Filter Distrik) */}
+            <div ref={customExportRef} className="relative shrink-0">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsCustomExportOpen((prev) => !prev)
+                  setIsTableDropdownOpen(false)
+                }}
+                className={`h-9 px-3 sm:px-3.5 rounded-full border text-xs font-semibold flex items-center gap-1.5 cursor-pointer transition-all shrink-0 ${
+                  isCustomExportOpen
+                    ? 'border-primary bg-primary-50 text-primary ring-2 ring-primary-400/30'
+                    : 'border-primary-200 bg-primary-50/60 text-primary hover:bg-primary-50'
+                }`}
+                title="Pilih kolom dan filter tertentu untuk diunduh sebagai CSV"
+              >
+                <Filter className="w-3.5 h-3.5" />
+                <span>Ekspor Kustom</span>
+              </button>
+
+              {isCustomExportOpen && (
+                <div className="absolute top-full right-0 mt-2 w-80 sm:w-96 bg-surface rounded-2xl shadow-xl border border-line p-4 z-50 text-left">
+                  <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-line">
+                    <div>
+                      <div className="text-xs font-extrabold text-ink">
+                        Ekspor CSV Kustom
+                      </div>
+                      <div className="text-[11px] text-muted">
+                        Pilih kolom & filter data untuk tabel {activeTableMeta.label}
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setIsCustomExportOpen(false)}
+                      className="p-1 rounded-lg text-muted hover:text-ink hover:bg-canvas cursor-pointer"
+                      aria-label="Tutup panel ekspor kustom"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  {/* Filter Distrik & Cakupan Baris */}
+                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div>
+                      <label className="block text-[11px] font-bold text-ink mb-1">
+                        Filter Distrik
+                      </label>
+                      <select
+                        value={exportDistrikFilter}
+                        onChange={(e) => setExportDistrikFilter(e.target.value)}
+                        className="w-full h-8 px-2.5 rounded-xl bg-canvas border border-line text-xs font-semibold text-ink outline-none focus:border-primary"
+                      >
+                        <option value="ALL">Semua Distrik</option>
+                        {availableExportDistriks.map((dist) => (
+                          <option key={dist} value={dist}>
+                            {dist}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-ink mb-1">
+                        Sumber Baris
+                      </label>
+                      <select
+                        value={exportScope}
+                        onChange={(e) => setExportScope(e.target.value)}
+                        className="w-full h-8 px-2.5 rounded-xl bg-canvas border border-line text-xs font-semibold text-ink outline-none focus:border-primary"
+                      >
+                        <option value="filtered">Data Terfilter ({filteredData.length})</option>
+                        <option value="selected" disabled={selectedRows.size === 0}>
+                          Baris Dicentang ({selectedRows.size})
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Pilihan Kolom */}
+                  <div className="mt-3">
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="text-[11px] font-bold text-ink">
+                        Pilih Kolom ({selectedExportColumns.length}/{currentExportColumns.length})
+                      </span>
+                      <div className="flex items-center gap-2 text-[11px] font-semibold">
+                        {selectedTable === 'RingkasanHuria' && (
+                          <button
+                            type="button"
+                            onClick={applyPeleanPemasukanPreset}
+                            className="text-primary hover:underline cursor-pointer"
+                          >
+                            Pelean & Pemasukan
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setSelectedExportColumns(currentExportColumns.map((c) => c.key))
+                          }
+                          className="text-muted hover:text-ink cursor-pointer"
+                        >
+                          Semua
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedExportColumns([])}
+                          className="text-muted hover:text-ink cursor-pointer"
+                        >
+                          Kosongkan
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="max-h-44 overflow-y-auto pr-1 grid grid-cols-2 gap-1.5 bg-canvas/60 p-2 rounded-xl border border-line">
+                      {currentExportColumns.map((col) => {
+                        const checked = selectedExportColumns.includes(col.key)
+                        return (
+                          <label
+                            key={col.key}
+                            className={`flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs cursor-pointer transition-colors ${
+                              checked
+                                ? 'bg-primary-50 text-primary font-bold'
+                                : 'text-ink hover:bg-surface'
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={() => toggleExportColumn(col.key)}
+                              className="rounded border-line accent-primary cursor-pointer"
+                            />
+                            <span className="truncate">{col.label}</span>
+                          </label>
+                        )
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Footer Aksi Unduh */}
+                  <div className="mt-3.5 pt-2.5 border-t border-line flex items-center justify-between gap-2">
+                    <span className="text-[11px] text-muted">
+                      {customExportCandidateRows.length} baris · {selectedExportColumns.length} kolom
+                    </span>
+                    <button
+                      type="button"
+                      onClick={handleCustomExportCSV}
+                      disabled={
+                        selectedExportColumns.length === 0 ||
+                        customExportCandidateRows.length === 0
+                      }
+                      className="h-8 px-3.5 rounded-xl bg-primary text-white text-xs font-bold flex items-center gap-1.5 hover:opacity-95 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-opacity"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Unduh CSV Kustom</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Dropdown "Tabel ditampilkan" */}
             <div ref={dropdownRef} className="relative shrink-0">
               <button
                 type="button"
-                onClick={() => setIsTableDropdownOpen(!isTableDropdownOpen)}
+                onClick={() => {
+                  setIsTableDropdownOpen(!isTableDropdownOpen)
+                  setIsCustomExportOpen(false)
+                }}
                 className={`h-9 px-3 sm:px-3.5 rounded-full border text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all max-w-[180px] sm:max-w-[230px] ${
                   isTableDropdownOpen
                     ? 'border-primary ring-2 ring-primary-400/30 bg-surface text-primary'
