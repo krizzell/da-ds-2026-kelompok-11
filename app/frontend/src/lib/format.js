@@ -114,6 +114,8 @@ export function formatNumber(value) {
   return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }
 
+export { exportWilayahToExcel } from '../utils/excelExporter'
+
 /**
  * Ekspor data daftar wilayah ke file CSV
  * @param {string} filename

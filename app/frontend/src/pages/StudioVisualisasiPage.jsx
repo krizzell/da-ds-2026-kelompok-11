@@ -32,6 +32,7 @@ import {
   Info,
 } from 'lucide-react'
 import { formatRupiah, formatCompactRupiah, exportToCSV } from '../utils/formatters'
+import { exportVisualisasiToExcel } from '../utils/excelExporter'
 import {
   SvgBarChart,
   SvgLineChart,
@@ -675,8 +676,9 @@ export const StudioVisualisasiPage = ({ wilayahData = [], filters = {}, onFilter
     })
   }, [comparedEntities, entityStats, totalOverall, chartData, tableSortField, tableSortDirection, comparisonLevel, metric])
 
-  // CSV Export: Menampilkan informasi wilayah & filtering serta data visualisasi persis seperti yang tampil
-  const handleExportCSV = () => {
+  // Ekspor Hasil Visualisasi ke file Excel (.xlsx):
+  // Menampilkan informasi wilayah & filtering serta data visualisasi persis seperti yang tampil
+  const handleExportExcel = () => {
     if (!comparedEntities.length || !chartData.length) {
       alert('Tidak ada data visualisasi untuk diekspor. Silakan pilih minimal 1 wilayah terlebih dahulu.')
       return
@@ -695,7 +697,6 @@ export const StudioVisualisasiPage = ({ wilayahData = [], filters = {}, onFilter
           ? 'Resort'
           : 'Distrik'
 
-    const entityNames = comparedEntities.map((e) => e.name).join('; ')
     const timeFilterModeLabel =
       organisasiFilter.periode.mode === 'tahun'
         ? `Per Tahun (${periodBadgeLabel})`
@@ -704,127 +705,24 @@ export const StudioVisualisasiPage = ({ wilayahData = [], filters = {}, onFilter
           : `Per Minggu (${periodBadgeLabel})`
 
     const metricLabel = METRIC_LABELS[metric] || 'Total'
-
-    const escapeCSV = (val) => {
-      if (val === null || val === undefined) return '""'
-      return `"${String(val).replace(/"/g, '""')}"`
-    }
-
-    const lines = []
-
-    // 1. INFORMASI PARAMETER & FILTERING
-    lines.push(escapeCSV('LAPORAN HASIL VISUALISASI DATA HKBP'))
-    lines.push(`${escapeCSV('Waktu Ekspor')},${escapeCSV(new Date().toLocaleString('id-ID'))}`)
-    lines.push('')
-    lines.push(escapeCSV('PARAMETER & FILTER AKTIF'))
-    lines.push(`${escapeCSV('Sumber Data')},${escapeCSV(meta.sumber)}`)
-    lines.push(`${escapeCSV('Kategori / Jenis')},${escapeCSV(meta.kategori)}`)
-    lines.push(`${escapeCSV('Filter Waktu')},${escapeCSV(timeFilterModeLabel)}`)
-    lines.push(`${escapeCSV('Tingkat Wilayah')},${escapeCSV(levelLabel)}`)
-    lines.push(`${escapeCSV('Wilayah yang Ditampilkan')},${escapeCSV(entityNames)}`)
-    lines.push(`${escapeCSV('Metrik Agregasi')},${escapeCSV(metricLabel)}`)
-    lines.push('')
-
-    // 2. DATA DERET WAKTU VISUALISASI
-    lines.push(escapeCSV('DATA DERET WAKTU VISUALISASI'))
-    const tableHeaders = [
-      timeAxisTitle,
-      ...comparedEntities.map((e) => e.name),
-    ]
-    if (comparedEntities.length > 1) {
-      tableHeaders.push('Total Semua Wilayah')
-    }
-    tableHeaders.push('Sumber Data', 'Kategori', 'Filter Waktu', 'Tingkat Wilayah')
-    lines.push(tableHeaders.map(escapeCSV).join(','))
-
-    const columnSums = {}
-    comparedEntities.forEach((e) => {
-      columnSums[e.id] = 0
-    })
-    let totalAllColumns = 0
-
-    chartData.forEach((row) => {
-      let rowTotal = 0
-      const rowValues = [escapeCSV(row.label)]
-
-      comparedEntities.forEach((ent) => {
-        const val = row[ent.id] || 0
-        columnSums[ent.id] = (columnSums[ent.id] || 0) + val
-        rowTotal += val
-        rowValues.push(val)
-      })
-
-      if (comparedEntities.length > 1) {
-        rowValues.push(rowTotal)
-      }
-      totalAllColumns += rowTotal
-
-      rowValues.push(
-        escapeCSV(meta.sumber),
-        escapeCSV(meta.kategori),
-        escapeCSV(periodBadgeLabel),
-        escapeCSV(levelLabel)
-      )
-
-      lines.push(rowValues.join(','))
-    })
-
-    // Baris TOTAL KESELURUHAN
-    const totalRow = [escapeCSV('TOTAL KESELURUHAN')]
-    comparedEntities.forEach((ent) => {
-      totalRow.push(metric === 'AVG' ? (entityStats[ent.id]?.total || 0) : (columnSums[ent.id] || 0))
-    })
-    if (comparedEntities.length > 1) {
-      totalRow.push(metric === 'AVG' ? totalOverall : totalAllColumns)
-    }
-    totalRow.push(
-      escapeCSV(meta.sumber),
-      escapeCSV(meta.kategori),
-      escapeCSV(periodBadgeLabel),
-      escapeCSV(levelLabel)
-    )
-    lines.push(totalRow.join(','))
-
-    lines.push('')
-
-    // 3. RINGKASAN & STATISTIK WILAYAH
-    lines.push(escapeCSV('--- RINGKASAN & STATISTIK WILAYAH ---'))
-    const summaryHeaders = [
-      'Nama Wilayah / Entitas',
-      'Tingkat Wilayah',
-      `Total Nilai ${meta.unit === 'Rp' ? '(Nominal)' : '(Jiwa)'}`,
-      'Total Terformat',
-      'Kontribusi (%)',
-      'Rata-rata per Periode',
-      'Nilai Tertinggi (Puncak)',
-    ]
-    lines.push(summaryHeaders.map(escapeCSV).join(','))
-
-    comparedEntities.forEach((ent) => {
-      const stat = entityStats[ent.id] || { total: 0, peakVal: 0, peakLabel: '-' }
-      const totalVal = stat.total || 0
-      const pct = metric !== 'AVG' && totalOverall > 0 ? ((totalVal / totalOverall) * 100).toFixed(2) + '%' : '—'
-      const avg = metric === 'AVG' ? totalVal : chartData.length > 0 ? Math.round(totalVal / chartData.length) : 0
-      const peakFormatted = `${meta.unit === 'Rp' ? formatRupiah(stat.peakVal) : stat.peakVal} (${stat.peakLabel})`
-      const totalFormatted = meta.unit === 'Rp' ? formatRupiah(totalVal) : `${totalVal.toLocaleString('id-ID')} Jiwa`
-
-      lines.push([
-        escapeCSV(ent.name),
-        escapeCSV(levelLabel),
-        totalVal,
-        escapeCSV(totalFormatted),
-        escapeCSV(pct),
-        avg,
-        escapeCSV(peakFormatted),
-      ].join(','))
-    })
-
-    const csvContent = lines.join('\r\n')
     const safeSource = dataSource.replace(/::/g, '_').replace(/[^a-zA-Z0-9_]/g, '')
     const safePeriod = periodBadgeLabel.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '')
-    const safeFileName = `hkbp_visualisasi_${safeSource}_${safePeriod}.csv`
+    const safeFileName = `hkbp_visualisasi_${safeSource}_${safePeriod}_${new Date().toISOString().slice(0, 10)}.xlsx`
 
-    exportToCSV(csvContent, safeFileName)
+    exportVisualisasiToExcel({
+      filename: safeFileName,
+      meta,
+      levelLabel,
+      timeFilterModeLabel,
+      periodBadgeLabel,
+      metricLabel,
+      metric,
+      comparedEntities,
+      chartData,
+      entityStats,
+      totalOverall,
+      timeAxisTitle,
+    })
   }
 
   const isMultiEntity = comparedEntities.length >= 2
@@ -855,11 +753,11 @@ export const StudioVisualisasiPage = ({ wilayahData = [], filters = {}, onFilter
         </div>
 
         <button
-          onClick={handleExportCSV}
+          onClick={handleExportExcel}
           className="h-9 px-4 rounded-full bg-primary text-white text-xs font-semibold flex items-center gap-2 hover:bg-primary-700 active:bg-primary-900 shadow-xs cursor-pointer transition-colors"
         >
           <Download className="w-3.5 h-3.5 text-white" />
-          <span>Ekspor Hasil (CSV)</span>
+          <span>Ekspor Hasil</span>
         </button>
       </div>
 

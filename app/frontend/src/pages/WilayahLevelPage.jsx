@@ -10,7 +10,8 @@ import { Pagination } from '../components/wilayah/Pagination'
 import { SkeletonWilayah } from '../components/wilayah/SkeletonWilayah'
 import { EmptyStateWilayah } from '../components/wilayah/EmptyStateWilayah'
 import { ErrorStateWilayah } from '../components/wilayah/ErrorStateWilayah'
-import { exportWilayahToCsv } from '../lib/format'
+import { exportWilayahToExcel } from '../utils/excelExporter'
+import { getWilayahAnak } from '../api/wilayahExplorerApi'
 
 /**
  * WilayahLevelPage
@@ -135,10 +136,45 @@ export function WilayahLevelPage({
     level === 'distrik' ? 'di seluruh Indonesia' : 'dalam wilayah ini'
   }`
 
-  // 6. Tangani Tombol Ekspor CSV
-  const handleExportCsv = () => {
-    const filename = `${level}-${idInduk || 'semua'}-${new Date().toISOString().slice(0, 10)}.csv`
-    exportWilayahToCsv(filename, items, childNoun)
+  // 6. Tangani Tombol Ekspor Hasil (Excel .xlsx)
+  const handleExport = async () => {
+    let exportItems = items
+
+    // Jika data terpaginasi (level huria) dan total lebih besar dari halaman saat ini,
+    // ambil seluruh data yang sesuai filter pengguna agar tidak ada data yang hilang/terpotong
+    if (limit > 0 && total > items.length) {
+      try {
+        const fullRes = await getWilayahAnak({
+          level,
+          idInduk,
+          q: searchQuery,
+          sort,
+          status,
+          page: 1,
+          limit: 0,
+          periode: globalFilters,
+        })
+        if (fullRes?.data && fullRes.data.length > 0) {
+          exportItems = fullRes.data
+        }
+      } catch (err) {
+        console.warn('Gagal mengambil seluruh data untuk ekspor, menggunakan data tampilan saat ini:', err)
+      }
+    }
+
+    const safeInduk = (idInduk || 'semua').replace(/[^a-zA-Z0-9_-]/g, '_')
+    const filename = `hkbp_wilayah_${level}_${safeInduk}_${new Date().toISOString().slice(0, 10)}.xlsx`
+
+    exportWilayahToExcel({
+      filename,
+      items: exportItems,
+      level,
+      idInduk,
+      parentDetail,
+      searchQuery,
+      status,
+      sort,
+    })
   }
 
   // JIKA WILAYAH INDUK TIDAK DITEMUKAN ATAU DI LUAR CAKUPAN ROLE
@@ -167,7 +203,8 @@ export function WilayahLevelPage({
         title={pageTitle}
         subtitle={countSubtitle}
         pimpinan={parentDetail?.namaPimpinan}
-        onExportCsv={handleExportCsv}
+        onExport={handleExport}
+        onExportCsv={handleExport}
         onNavigate={onNavigate}
       />
 
