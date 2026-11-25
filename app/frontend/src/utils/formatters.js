@@ -50,6 +50,13 @@ export const getISOWeek = (dateStr) => {
   return weekNumber
 }
 
+export {
+  exportToExcel,
+  generateExcelBlob,
+  exportVisualisasiToExcel,
+  exportWilayahToExcel,
+} from './excelExporter'
+
 // CSV Exporter (Mendukung array of objects atau formatted string CSV)
 export const exportToCSV = (data, filename = 'ekspor_hkbp.csv') => {
   if (!data) {

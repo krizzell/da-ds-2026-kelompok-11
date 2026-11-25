@@ -17,6 +17,7 @@ export function WilayahHeader({
   title = 'Distrik HKBP',
   subtitle = '36 distrik di seluruh Indonesia',
   pimpinan = '',
+  onExport,
   onExportCsv,
   onNavigate,
   className = '',
@@ -63,16 +64,16 @@ export function WilayahHeader({
           </div>
         </div>
 
-        {/* Tombol Ekspor CSV */}
-        {onExportCsv && (
+        {/* Tombol Ekspor Hasil (Excel) */}
+        {(onExport || onExportCsv) && (
           <button
             type="button"
-            onClick={onExportCsv}
-            title="Ekspor daftar ke format CSV"
+            onClick={onExport || onExportCsv}
+            title="Ekspor daftar ke format Excel (.xlsx)"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-primary hover:bg-primary-700 text-white text-xs sm:text-sm font-bold shadow-xs hover:shadow-sm transition-all cursor-pointer shrink-0"
           >
             <Download className="w-4 h-4" aria-hidden="true" />
-            <span>Ekspor CSV</span>
+            <span>Ekspor Hasil</span>
           </button>
         )}
       </div>
