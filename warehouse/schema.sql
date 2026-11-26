@@ -8,6 +8,8 @@
 PRAGMA foreign_keys = ON;
 
 DROP VIEW  IF EXISTS v_huria;
+DROP TABLE IF EXISTS fact_pembayaran_alokasi;
+DROP TABLE IF EXISTS fact_kewajiban_setoran;
 DROP TABLE IF EXISTS fact_setoran;
 DROP TABLE IF EXISTS fact_alokasi;
 DROP TABLE IF EXISTS fact_pemasukan;
@@ -141,6 +143,36 @@ CREATE TABLE fact_setoran (
     total_rincian  INTEGER NOT NULL DEFAULT 0
 );
 
+-- Grain: satu Huria + bulan transaksi pemasukan yang dialokasikan ke pusat.
+-- Tenggat bisa kosong: TANPA JADWAL tidak berarti terlambat.
+CREATE TABLE fact_kewajiban_setoran (
+    huria_key INTEGER NOT NULL REFERENCES dim_huria(huria_key),
+    periode TEXT NOT NULL,
+    nominal_kewajiban INTEGER NOT NULL CHECK(nominal_kewajiban >= 0),
+    total_dibayar INTEGER NOT NULL CHECK(total_dibayar >= 0),
+    sisa_kewajiban INTEGER NOT NULL CHECK(sisa_kewajiban >= 0),
+    tanggal_jatuh_tempo TEXT,
+    tanggal_pelunasan TEXT,
+    status TEXT NOT NULL,
+    status_verifikasi TEXT NOT NULL DEFAULT 'BELUM_DIVERIFIKASI',
+    is_synthetic INTEGER NOT NULL DEFAULT 0 CHECK(is_synthetic IN (0,1)),
+    label_terlambat INTEGER CHECK(label_terlambat IN (0,1) OR label_terlambat IS NULL),
+    layak_untuk_dataset_nyata INTEGER NOT NULL DEFAULT 0,
+    sumber_aturan TEXT,
+    as_of TEXT NOT NULL,
+    PRIMARY KEY (huria_key, periode)
+);
+
+-- Simpan relasi rinci pembayaran: dibutuhkan untuk menghitung pelunasan bertahap.
+CREATE TABLE fact_pembayaran_alokasi (
+    id_rincian TEXT PRIMARY KEY,
+    id_setoran TEXT NOT NULL REFERENCES fact_setoran(id_setoran),
+    id_alokasi TEXT NOT NULL REFERENCES fact_alokasi(id_alokasi),
+    huria_key INTEGER NOT NULL REFERENCES dim_huria(huria_key),
+    tanggal_setor TEXT NOT NULL,
+    nominal_dilunasi INTEGER NOT NULL CHECK(nominal_dilunasi > 0)
+);
+
 CREATE TABLE dq_report (
     tahap      TEXT NOT NULL,
     tabel      TEXT NOT NULL,
@@ -171,3 +203,6 @@ SELECT h.huria_key, h.id_huria, h.nama_huria, h.jumlah_jemaat,
 FROM dim_huria h
 JOIN dim_resort r ON r.resort_key = h.resort_key
 JOIN dim_distrik d ON d.distrik_key = r.distrik_key;
+
+CREATE INDEX ix_kewajiban_huria_periode ON fact_kewajiban_setoran(huria_key, periode);
+CREATE INDEX ix_bayar_alokasi_tanggal ON fact_pembayaran_alokasi(id_alokasi,tanggal_setor);

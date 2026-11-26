@@ -34,3 +34,8 @@ Thumbs.db
 *.db.tmp
 *.sqlite.tmp
 *.log
+
+# Kewajiban setoran: keluaran eksperimen sintetis (JANGAN commit data demo)
+data/synthetic/*.json
+data/processed/*demo*.db
+docs/DATA_QUALITY_REPORT_DEMO.md

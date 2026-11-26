@@ -13,6 +13,7 @@ import { ManajemenDataPage } from './pages/ManajemenDataPage'
 import { KelolaWilayahPage } from './pages/KelolaWilayahPage'
 import { StorytellingPage } from './pages/StorytellingPage'
 import { ModelPrediksiPage } from './pages/ModelPrediksiPage'
+import { MonitoringSetoranPage } from './pages/MonitoringSetoranPage'
 import { WilayahLevelPage } from './pages/WilayahLevelPage'
 import { HuriaDetailPage } from './pages/HuriaDetailPage'
 import { setLiveWilayahTree } from './api/wilayahExplorerApi'
@@ -24,6 +25,7 @@ const tabFromPath = (p) => {
   if (p.startsWith('/visualisasi') || p.startsWith('/studio')) return 'studio'
   if (p.startsWith('/storytelling')) return 'storytelling'
   if (p.startsWith('/model-prediksi')) return 'model'
+  if (p.startsWith('/monitoring-setoran')) return 'kewajiban'
   if (p.startsWith('/tabel')) return 'tabel'
   if (p.startsWith('/kelola')) return 'kelola-wilayah'
   if (p.startsWith('/pengaturan') || p.startsWith('/manajemen')) return 'manajemen'
@@ -99,6 +101,8 @@ function MainApp() {
         handleNavigate('/storytelling')
       } else if (tabId === 'model') {
         handleNavigate('/model-prediksi')
+      } else if (tabId === 'kewajiban') {
+        handleNavigate('/monitoring-setoran')
       } else if (tabId === 'tabel') {
         handleNavigate('/tabel')
       } else if (tabId === 'kelola-wilayah') {
@@ -214,6 +218,7 @@ function MainApp() {
     studio: 'Visualisasi',
     storytelling: 'Storytelling',
     model: 'Prediksi Pelean (ML)',
+    kewajiban: 'Monitoring Kewajiban Setoran',
     perbandingan: 'Wilayah & Huria',
     'kelola-wilayah': 'Kelola Wilayah',
     manajemen: 'Pengaturan',
@@ -331,6 +336,8 @@ function MainApp() {
               {activeTab === 'storytelling' && <StorytellingPage />}
 
               {activeTab === 'model' && <ModelPrediksiPage />}
+
+              {activeTab === 'kewajiban' && <MonitoringSetoranPage wilayahData={wilayahData} />}
 
               {activeTab === 'tabel' && (
                 <DataTabelPage wilayahData={wilayahData} filters={filters} />

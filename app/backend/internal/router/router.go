@@ -154,6 +154,9 @@ func New(
 					huriaItem.PUT("/alokasi/:idAlokasi", operator, wilayah.UpdateAlokasi)
 					huriaItem.DELETE("/alokasi/:idAlokasi", operator, wilayah.DeleteAlokasi)
 
+					// Monitoring kewajiban dan jadwal (terpisah dari fitur ML pelean).
+					huriaItem.GET("/kewajiban-setoran", operator, wilayah.GetKewajibanSetoran)
+					huriaItem.PUT("/jadwal-setoran/:periode", operator, wilayah.UpsertJadwalSetoran)
 					huriaItem.POST("/setoran", operator, wilayah.AddSetoranPusat)
 					huriaItem.PUT("/setoran/:idSetoran", operator, wilayah.UpdateSetoranPusat)
 					huriaItem.DELETE("/setoran/:idSetoran", operator, wilayah.DeleteSetoranPusat)

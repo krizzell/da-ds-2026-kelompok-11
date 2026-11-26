@@ -71,3 +71,10 @@ export const deleteLunggu = (idHuria, idLunggu) =>
 // Warta
 export const updateWarta = (idHuria, warta) =>
   client.put(`/huria/${idHuria}/warta`, warta).then((res) => res.data)
+// Monitoring kewajiban setoran (bukan output Machine Learning).
+export const getKewajibanSetoran = (idHuria, asOf) =>
+  client.get(`/huria/${encodeURIComponent(idHuria)}/kewajiban-setoran`, { params: { asOf } }).then((r) => r.data)
+
+// Jadwal per Huria/periode. Tanggal demo wajib diberi StatusVerifikasi SIMULASI.
+export const upsertJadwalSetoran = (idHuria, periode, payload) =>
+  client.put(`/huria/${encodeURIComponent(idHuria)}/jadwal-setoran/${encodeURIComponent(periode)}`, payload).then((r) => r.data)
