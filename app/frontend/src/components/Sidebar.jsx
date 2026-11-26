@@ -13,6 +13,7 @@ import {
   Layers,
   BookOpenText,
   BrainCircuit,
+  CalendarClock,
 } from 'lucide-react'
 
 export const Sidebar = ({
@@ -54,6 +55,12 @@ export const Sidebar = ({
       id: 'model',
       label: 'Prediksi Pelean (ML)',
       icon: BrainCircuit,
+      roles: ['SuperAdmin', 'Admin'],
+    },
+    {
+      id: 'kewajiban',
+      label: 'Monitoring Setoran',
+      icon: CalendarClock,
       roles: ['SuperAdmin', 'Admin'],
     },
     {

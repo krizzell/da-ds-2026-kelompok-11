@@ -59,6 +59,34 @@ type SetoranPusat struct {
 	Keterangan   string `bson:"Keterangan" json:"Keterangan"`
 }
 
+// JadwalSetoran menyimpan tenggat PER HURIA + PERIODE; bukan tanggal setor.
+// StatusVerifikasi=SIMULASI hanya untuk pengembangan; tidak menjadi aturan resmi HKBP.
+type JadwalSetoran struct {
+	Periode           string `bson:"Periode" json:"Periode"`                     // YYYY-MM
+	TanggalJatuhTempo string `bson:"TanggalJatuhTempo" json:"TanggalJatuhTempo"` // YYYY-MM-DD
+	SumberAturan      string `bson:"SumberAturan" json:"SumberAturan"`
+	VersiAturan       string `bson:"VersiAturan" json:"VersiAturan"`
+	StatusVerifikasi  string `bson:"StatusVerifikasi" json:"StatusVerifikasi"` // SIMULASI / TERVERIFIKASI
+	IsSynthetic       bool   `bson:"IsSynthetic" json:"IsSynthetic"`
+}
+
+type RingkasanKewajibanSetoran struct {
+	IdHuria                string `json:"idHuria"`
+	Periode                string `json:"periode"`
+	NominalKewajiban       int64  `json:"nominalKewajiban"`
+	TotalDibayar           int64  `json:"totalDibayar"`
+	SisaKewajiban          int64  `json:"sisaKewajiban"`
+	TanggalJatuhTempo      string `json:"tanggalJatuhTempo,omitempty"`
+	TanggalPelunasan       string `json:"tanggalPelunasan,omitempty"`
+	SumberAturan           string `json:"sumberAturan,omitempty"`
+	StatusVerifikasi       string `json:"statusVerifikasi"`
+	IsSynthetic            bool   `json:"isSynthetic"`
+	Status                 string `json:"status"`
+	Terlambat              *bool  `json:"terlambat"` // null jika label belum dapat ditentukan
+	LayakUntukDatasetNyata bool   `json:"layakUntukDatasetNyata"`
+	AsOf                   string `json:"asOf"`
+}
+
 type RincianSetoranPusat struct {
 	IdRincian       string `bson:"IdRincian" json:"IdRincian"`
 	IdSetoran       string `bson:"IdSetoran" json:"IdSetoran"`
@@ -83,6 +111,7 @@ type Huria struct {
 	PemasukanJemaat     []PemasukanJemaat     `bson:"PemasukanJemaat" json:"PemasukanJemaat"`
 	AlokasiTransaksi    []AlokasiTransaksi    `bson:"AlokasiTransaksi" json:"AlokasiTransaksi"`
 	SetoranPusat        []SetoranPusat        `bson:"SetoranPusat" json:"SetoranPusat"`
+	JadwalSetoran       []JadwalSetoran       `bson:"JadwalSetoran,omitempty" json:"JadwalSetoran,omitempty"`
 	RincianSetoranPusat []RincianSetoranPusat `bson:"RincianSetoranPusat" json:"RincianSetoranPusat"`
 }
 
@@ -163,6 +192,8 @@ type WilayahService interface {
 	UpdateAlokasi(ctx context.Context, idHuria string, idAlokasi string, item AlokasiTransaksi, currentUser *User) error
 	DeleteAlokasi(ctx context.Context, idHuria string, idAlokasi string, currentUser *User) error
 
+	GetRingkasanKewajibanSetoran(ctx context.Context, idHuria string, asOf string, currentUser *User) ([]RingkasanKewajibanSetoran, error)
+	UpsertJadwalSetoran(ctx context.Context, idHuria string, periode string, jadwal JadwalSetoran, currentUser *User) error
 	AddSetoranPusat(ctx context.Context, idHuria string, item SetoranPusat, rincian []RincianSetoranPusat, currentUser *User) error
 	UpdateSetoranPusat(ctx context.Context, idHuria string, idSetoran string, item SetoranPusat, currentUser *User) error
 	DeleteSetoranPusat(ctx context.Context, idHuria string, idSetoran string, currentUser *User) error

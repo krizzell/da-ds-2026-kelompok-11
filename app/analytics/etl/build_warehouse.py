@@ -28,6 +28,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from etl.kewajiban import hitung_kewajiban
+
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]  # app/analytics
@@ -123,7 +125,7 @@ def load_documents(source: str, json_path: Path | None, mongo_uri: str | None,
 
 def extract(documents: list[dict]) -> dict[str, pd.DataFrame]:
     """Ratakan dokumen bersarang -> dict DataFrame mentah (belum dibersihkan)."""
-    huria, kategori, sesi, pelean, pemasukan, alokasi, setoran, rincian = ([] for _ in range(8))
+    huria, kategori, sesi, pelean, pemasukan, alokasi, setoran, rincian, jadwal = ([] for _ in range(9))
     for doc in documents:
         for distrik in _list((doc.get("Pusat") or {}).get("Distrik")):
             if not _aktif(distrik.get("Aktif", True)):
@@ -169,6 +171,13 @@ def extract(documents: list[dict]) -> dict[str, pd.DataFrame]:
                         setoran.append({"id_huria": id_huria, "id_setoran": s.get("IdSetoran"),
                                         "periode": s.get("Periode"), "tanggal_setor": s.get("TanggalSetor"),
                                         "total_setoran": s.get("TotalSetoran")})
+                    for j in _list(h.get("JadwalSetoran")):
+                        jadwal.append({"id_huria": id_huria, "periode": j.get("Periode"),
+                                       "tanggal_jatuh_tempo": j.get("TanggalJatuhTempo"),
+                                       "sumber_aturan": j.get("SumberAturan"),
+                                       "versi_aturan": j.get("VersiAturan"),
+                                       "status_verifikasi": j.get("StatusVerifikasi"),
+                                       "is_synthetic": j.get("IsSynthetic", False)})
                     for r in _list(h.get("RincianSetoranPusat")):
                         rincian.append({"id_huria": id_huria, "id_rincian": r.get("IdRincian"),
                                         "id_setoran": r.get("IdSetoran"), "id_alokasi": r.get("IdAlokasi"),
@@ -177,7 +186,7 @@ def extract(documents: list[dict]) -> dict[str, pd.DataFrame]:
         "huria": pd.DataFrame(huria), "kategori": pd.DataFrame(kategori), "sesi": pd.DataFrame(sesi),
         "pelean": pd.DataFrame(pelean), "pemasukan": pd.DataFrame(pemasukan),
         "alokasi": pd.DataFrame(alokasi), "setoran": pd.DataFrame(setoran),
-        "rincian": pd.DataFrame(rincian),
+        "rincian": pd.DataFrame(rincian), "jadwal": pd.DataFrame(jadwal),
     }
 
 
@@ -191,12 +200,13 @@ REQUIRED = {
     "alokasi": ["id_alokasi", "id_transaksi", "peruntukan", "nominal"],
     "setoran": ["id_setoran", "tanggal_setor", "total_setoran"],
     "rincian": ["id_rincian", "id_setoran", "id_alokasi", "nominal_dilunasi"],
+    "jadwal": ["id_huria", "periode", "tanggal_jatuh_tempo", "sumber_aturan", "versi_aturan", "status_verifikasi"],
 }
 KEY = {"huria": ["id_huria"], "kategori": ["id_huria", "id_kategori"], "sesi": ["id_huria", "id_sesi"],
        "pelean": ["id_huria", "id_sesi", "jenis"], "pemasukan": ["id_huria", "id_transaksi"],
        "alokasi": ["id_huria", "id_alokasi"], "setoran": ["id_huria", "id_setoran"],
-       "rincian": ["id_huria", "id_rincian"]}
-DATE_COLS = {"sesi": "tanggal", "pemasukan": "tanggal", "setoran": "tanggal_setor"}
+       "rincian": ["id_huria", "id_rincian"], "jadwal": ["id_huria", "periode"]}
+DATE_COLS = {"sesi": "tanggal", "pemasukan": "tanggal", "setoran": "tanggal_setor", "jadwal": "tanggal_jatuh_tempo"}
 NONNEG = {"sesi": ["jumlah_hadir"], "pelean": ["nominal"], "pemasukan": ["nominal"],
           "alokasi": ["nominal"], "setoran": ["total_setoran"], "rincian": ["nominal_dilunasi"]}
 
@@ -470,12 +480,32 @@ def load(conn: sqlite3.Connection, t: dict[str, pd.DataFrame]) -> dict[str, int]
         cur.execute("INSERT INTO fact_setoran VALUES (?,?,?,?,?,?)",
                     (r["id_setoran"], _wkey(r["tanggal_setor"]), huria_key[r["id_huria"]], r["periode"],
                      int(r["total_setoran"]), int(rincian_sum.get((r["id_huria"], r["id_setoran"]), 0))))
+    # ---- fakta kewajiban setoran (sumber alokasi + tanggal pelunasan per rincian)
+    kewajiban, rincian_bayar = hitung_kewajiban(t)
+    for p in rincian_bayar:
+        if p["id_huria"] not in huria_key:
+            continue
+        cur.execute("INSERT INTO fact_pembayaran_alokasi(id_rincian,id_setoran,id_alokasi,huria_key,tanggal_setor,nominal_dilunasi) VALUES (?,?,?,?,?,?)",
+                    (p["id_rincian"], p["id_setoran"], p["id_alokasi"], huria_key[p["id_huria"]],
+                     p["tanggal_setor"], p["nominal_dilunasi"]))
+    for k in kewajiban:
+        if k["id_huria"] not in huria_key:
+            continue
+        cur.execute("""INSERT INTO fact_kewajiban_setoran (
+                    huria_key, periode, nominal_kewajiban, total_dibayar, sisa_kewajiban,
+                    tanggal_jatuh_tempo, tanggal_pelunasan, status, status_verifikasi,
+                    is_synthetic, label_terlambat, layak_untuk_dataset_nyata,
+                    sumber_aturan, as_of) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                    (huria_key[k["id_huria"]], k["periode"], k["nominal_kewajiban"], k["total_dibayar"],
+                     k["sisa_kewajiban"], k["tanggal_jatuh_tempo"], k["tanggal_pelunasan"],
+                     k["status"], k["status_verifikasi"], k["is_synthetic"],
+                     k["label_terlambat"], k["layak_untuk_dataset_nyata"], k["sumber_aturan"], k["as_of"]))
     conn.commit()
 
     counts = {}
     for table in ("dim_waktu", "dim_distrik", "dim_resort", "dim_huria", "dim_kategori", "dim_jenis_pelean",
                   "dim_sesi", "dim_peruntukan", "fact_kehadiran", "fact_pelean", "fact_pemasukan",
-                  "fact_alokasi", "fact_setoran"):
+                  "fact_alokasi", "fact_setoran", "fact_kewajiban_setoran", "fact_pembayaran_alokasi"):
         counts[table] = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
     return counts
 
