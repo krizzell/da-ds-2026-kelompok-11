@@ -37,6 +37,11 @@ def sesi() -> dict:
     return {"data": _safe(queries.sesi)}
 
 
+@router.get("/kewajiban")
+def kewajiban() -> dict:
+    return _safe(queries.kewajiban)
+
+
 @router.get("/kategori")
 def kategori() -> dict:
     return {"data": _safe(queries.kategori)}

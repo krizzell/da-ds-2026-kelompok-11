@@ -1,64 +1,87 @@
 import { describe, expect, it } from 'vitest'
 import {
-  annotationsFor, computeKpis, drillLevel, easterDate, filterRows, isoWeekLabel, latestCompleteMonth, rankBy, toSankey,
+  EMPTY_SELECTION, filterRows, drillLevel, rankBy, latestCompleteMonth,
+  applyCategoryToCube, computeKpis, buildInsights, toSankey, toHeatmap, toSmallMultiples,
+  toMonthlyTrend, optionsFromRows,
 } from './storytelling'
 
-const row = (o) => ({ distrik: 'A', resort: 'R1', huria: 'H1', bulan: '2026-01', jumlahSesi: 8, totalHadir: 800, totalPelean: 8000,
-  totalPemasukan: 10000, alokasiPusat: 5500, alokasiKas: 4500, setoranDibayar: 5500, ...o })
+const row = (extra = {}) => ({
+  distrik: 'D1', resort: 'R1', huria: 'H1', idHuria: 'ID1', bulan: '2026-01',
+  jumlahSesi: 4, totalHadir: 100, totalPelean: 1000,
+  totalPemasukan: 10000, alokasiPusat: 5500, setoranDibayar: 5500,
+  ...extra,
+})
+const cube = [row(), row({ bulan: '2026-02', totalPemasukan: 11000 }), row({ distrik: 'D2', resort: 'R2', huria: 'H2', idHuria: 'ID2' })]
+const obligation = (extra = {}) => ({ distrik: 'D1', resort: 'R1', huria: 'H1', idHuria: 'ID1',
+  periode: '2026-01', nominalKewajiban: 5000, totalDibayar: 3000, sisaKewajiban: 2000,
+  tanggalJatuhTempo: '2026-02-10', status: 'TERLAMBAT_BELUM_LUNAS', asOf: '2026-03-01',
+  statusVerifikasi: 'TERVERIFIKASI', isSynthetic: 0, ...extra })
 
-const cube = [
-  row({ bulan: '2026-01' }), row({ bulan: '2026-02', totalPemasukan: 12000 }), row({ bulan: '2026-03', totalPemasukan: 15000 }),
-  row({ bulan: '2026-04', jumlahSesi: 2, totalPemasukan: 3000 }),
-  row({ huria: 'H2', resort: 'R2', distrik: 'B', setoranDibayar: 2750 }),
-]
-
-describe('storytelling', () => {
-  it('filter silang menyaring distrik/resort/huria', () => {
-    expect(filterRows(cube, { distrik: 'B', resort: null, huria: null, kategori: null })).toHaveLength(1)
-    expect(filterRows(cube, { distrik: null, resort: 'R1', huria: null, kategori: null })).toHaveLength(4)
+describe('Storytelling v2', () => {
+  it('filter hirarki dan periode diterapkan konsisten', () => {
+    expect(filterRows(cube, { distrik: 'D1', tahun: '2026' })).toHaveLength(2)
+    expect(filterRows(cube, { huria: 'H1', bulan: '2026-01' })).toHaveLength(1)
+    expect(optionsFromRows(cube, { distrik: 'D1' }).resort).toEqual(['R1'])
+    expect(drillLevel(EMPTY_SELECTION).key).toBe('distrik')
+    expect(drillLevel({ distrik: 'D1' }).key).toBe('resort')
   })
 
-  it('drill-down bergerak distrik > resort > huria', () => {
-    expect(drillLevel({}).level).toBe('distrik')
-    expect(drillLevel({ distrik: 'A' }).level).toBe('resort')
-    expect(drillLevel({ distrik: 'A', resort: 'R1' }).level).toBe('huria')
+  it('kategori pemasukan tidak mengganti nilai kewajiban dan tidak menyisakan pemasukan tak sesuai', () => {
+    const data = [{ idHuria: 'ID1', bulan: '2026-01', kategori: 'Pelean Minggu', nominal: 3500 }]
+    const filtered = applyCategoryToCube(cube, data, 'Pelean Minggu')
+    expect(filtered[0].totalPemasukan).toBe(3500)
+    expect(filtered[1].totalPemasukan).toBe(0)
+    expect(filtered[2].totalPemasukan).toBe(0)
+    const kpis = computeKpis(filtered, [obligation()], { kategori: 'Pelean Minggu', kewajibanAvailable: true })
+    expect(kpis[0].value).toBe(3500)
+    expect(kpis[1].value).toBe(5000)
   })
 
-  it('ranking menjumlahkan dan menghitung porsi', () => {
-    const r = rankBy(cube, {}, 'totalPemasukan')
-    expect(r[0].key).toBe('A')
-    expect(Math.round(r.reduce((s, x) => s + x.share, 0))).toBe(100)
+  it('kewajiban dihitung per periode, bukan melalui setoran bulan berjalan', () => {
+    const k = computeKpis(cube, [obligation()], { kewajibanAvailable: true })
+    expect(k).toHaveLength(4)
+    expect(k[1].value).toBe(5000)
+    expect(k[2].value).toBe(2000)
+    expect(k[3].value).toBe(0)
   })
 
-  it('bulan terakhir yang belum lengkap dilewati', () => {
-    expect(latestCompleteMonth(cube).latest).toBe('2026-03')
+  it('status sintetis atau belum diverifikasi tidak boleh dianggap patuh/tidak patuh', () => {
+    const k = computeKpis(cube, [obligation({ isSynthetic: 1 }), obligation({ statusVerifikasi: 'SIMULASI' })], { kewajibanAvailable: true })
+    expect(k[3].value).toBe(null)
+    const insight = buildInsights(cube, {}, [obligation({ isSynthetic: 1 })], { kewajibanAvailable: true })
+    expect(insight.rekomendasi.join(' ')).toMatch(/belum memiliki tenggat yang terverifikasi/i)
   })
 
-  it('KPI punya pembanding dan kepatuhan setoran dihitung', () => {
-    const kpis = computeKpis(cube)
-    expect(kpis).toHaveLength(4)
-    kpis.forEach((k) => expect(k.comparisons.length).toBeGreaterThan(0))
-    const kep = kpis.find((k) => k.id === 'kepatuhan')
-    expect(kep.value).toBeGreaterThan(80)
-    expect(kep.value).toBeLessThan(100)
+  it('warehouse lama tidak dilaporkan seolah kewajibannya bernilai 0', () => {
+    const k = computeKpis(cube, [], { kewajibanAvailable: false })
+    expect(k[1].value).toBe(null)
+    expect(k[2].value).toBe(null)
+    expect(k[3].value).toBe(null)
   })
 
-  it('Paskah 2026 jatuh pada 5 April dan minggu ISO-nya benar', () => {
-    const d = easterDate(2026)
-    expect(d.toISOString().slice(0, 10)).toBe('2026-04-05')
-    expect(isoWeekLabel(d)).toBe('2026-W14')
+  it('bulan cutoff parsial tidak disalahartikan sebagai bulan lengkap', () => {
+    expect(latestCompleteMonth(cube, '2026-02-12').latest).toBe('2026-01')
+    expect(latestCompleteMonth(cube, '2026-01-12').latest).toBe(null)
   })
 
-  it('anotasi menandai Paskah bila ada pada riwayat', () => {
-    const history = [{ label: '2026-W13', value: 1 }, { label: '2026-W14', value: 9 }]
-    expect(annotationsFor(history).map((a) => a.text)).toContain('Paskah')
+  it('Sankey punya ID node unik dan grouping Top N mempertahankan total', () => {
+    const data = [
+      { distrik: 'D1', resort: 'R1', huria: 'H1', bulan: '2026-01', kategori: 'Pelean Minggu', peruntukan: 'Setoran Pusat', nominal: 55 },
+      { distrik: 'D1', resort: 'R1', huria: 'H1', bulan: '2026-01', kategori: 'Pelean Minggu', peruntukan: 'Kas Huria', nominal: 45 },
+      { distrik: 'D2', resort: 'R2', huria: 'H2', bulan: '2026-01', kategori: 'Setoran Pusat', peruntukan: 'Setoran Pusat', nominal: 40 },
+    ]
+    const s = toSankey(data, {}, { topSources: 1, topCategories: 1 })
+    expect(s.nodes.some((n) => n.id === 'kategori:Setoran Pusat')).toBe(false) // Kategori bukan Top 1
+    expect(s.nodes.some((n) => n.id === 'tujuan:Setoran Pusat')).toBe(true)
+    expect(s.nodes.some((n) => n.id === 'wilayah:Wilayah lainnya')).toBe(true)
+    const totalOutgoing = s.links.filter((l) => l.source.startsWith('wilayah:')).reduce((sum, l) => sum + l.value, 0)
+    expect(totalOutgoing).toBe(140)
   })
 
-  it('sankey membentuk tautan tiga tingkat', () => {
-    const aliran = [{ distrik: 'A', resort: 'R1', huria: 'H1', bulan: '2026-01', kategori: 'Pelean Minggu', peruntukan: 'Setoran Pusat', nominal: 55 },
-      { distrik: 'A', resort: 'R1', huria: 'H1', bulan: '2026-01', kategori: 'Pelean Minggu', peruntukan: 'Kas Huria', nominal: 45 }]
-    const s = toSankey(aliran, {})
-    expect(s.links).toHaveLength(3)
-    expect(s.levels['Setoran Pusat']).toBe(2)
+  it('ranking, heatmap dan small multiples membatasi skala', () => {
+    expect(rankBy(cube, {}, 'totalPemasukan')[0].key).toBe('D1')
+    expect(toHeatmap(cube, {}, 'totalPemasukan', { maxMonths: 1 }).cols).toHaveLength(1)
+    expect(toSmallMultiples(cube, {}, { max: 1 }).length).toBe(1)
+    expect(toMonthlyTrend(cube, [obligation()], { months: 2 })).toHaveLength(2)
   })
 })
