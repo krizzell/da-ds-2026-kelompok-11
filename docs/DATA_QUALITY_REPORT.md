@@ -1,6 +1,6 @@
 # Laporan Kualitas Data & Hasil ETL
 
-- Dibuat otomatis oleh `etl/build_warehouse.py` pada 2026-11-11 02:27 UTC
+- Dibuat otomatis oleh `etl/build_warehouse.py` pada 2026-11-26 03:29 UTC
 - Sumber data: **mongo (MongoDB)**
 - Huria terdaftar: **56**, Huria yang memiliki data operasional: **56**
 
@@ -21,6 +21,8 @@
 | `fact_pemasukan` | 18.341 |
 | `fact_alokasi` | 36.682 |
 | `fact_setoran` | 8.736 |
+| `fact_kewajiban_setoran` | 8.792 |
+| `fact_pembayaran_alokasi` | 18.073 |
 
 ## 2. Kualitas data sebelum vs sesudah pembersihan
 

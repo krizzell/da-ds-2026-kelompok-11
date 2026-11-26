@@ -77,11 +77,12 @@ func New(
 				analyticsGroup.POST("/correlation", analytics.Correlation)
 				analyticsGroup.POST("/drop", analytics.Drop)
 
-				analyticsGroup.GET("/dw/ringkasan", analytics.DwRingkasan)
+				analyticsGroup.GET("/dw/ringkasan", superAdmin, analytics.DwRingkasan)
 				analyticsGroup.GET("/dw/cube", analytics.DwCube)
 				analyticsGroup.GET("/dw/aliran", analytics.DwAliran)
 				analyticsGroup.GET("/dw/sesi", analytics.DwSesi)
 				analyticsGroup.GET("/dw/kategori", analytics.DwKategori)
+				analyticsGroup.GET("/dw/kewajiban", analytics.DwKewajiban)
 				analyticsGroup.POST("/dw/refresh", superAdmin, analytics.DwRefresh)
 
 				analyticsGroup.GET("/ml/metrics", analytics.MlMetrics)

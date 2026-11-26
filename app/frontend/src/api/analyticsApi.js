@@ -13,6 +13,7 @@ export const getDwAliran = () => client.get('/analytics/dw/aliran').then((r) => 
 export const getDwSesi = () => client.get('/analytics/dw/sesi').then((r) => r.data.data)
 export const refreshDw = (latih = false) => client.post(`/analytics/dw/refresh?latih=${latih}`).then((r) => r.data)
 export const getDwKategori = () => client.get('/analytics/dw/kategori').then((r) => r.data.data)
+export const getDwKewajiban = () => client.get('/analytics/dw/kewajiban').then((r) => r.data)
 
 // Model Machine Learning (prediksi pelean sesi ibadah)
 export const getMlMetrics = () => client.get('/analytics/ml/metrics').then((r) => r.data)

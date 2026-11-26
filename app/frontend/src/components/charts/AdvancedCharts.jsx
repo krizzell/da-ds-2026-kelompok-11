@@ -14,85 +14,114 @@ function Empty({ text = 'Tidak ada data untuk filter ini' }) {
   return <div className="h-40 flex items-center justify-center text-xs text-muted">{text}</div>
 }
 
-/* ------------------------------------------------------------------ Sankey */
-// links: [{source, target, value}]  levels: { nodeName: 0|1|2 }
-export const SankeyChart = ({ links = [], levels = {}, height = 320, onNodeClick, activeNode, valueFormatter = fmt }) => {
-  const width = 760
+/* --------------------------------------------------- Sankey yang dapat dibaca
+ * Node mempunyai ID per tingkat, agar nama wilayah/kategori/peruntukan
+ * yang kebetulan sama tidak saling tertimpa. Label ditempatkan di luar aliran.
+ */
+export const SankeyChart = ({ nodes = [], links = [], onNodeClick, activeNode }) => {
+  const width = 1050
   const model = useMemo(() => {
-    const valid = links.filter((l) => l.value > 0)
-    const names = [...new Set(valid.flatMap((l) => [l.source, l.target]))]
-    const cols = {}
-    names.forEach((n) => {
-      const lv = levels[n] ?? 0
-      ;(cols[lv] = cols[lv] || []).push(n)
-    })
-    const out = {}
-    const inn = {}
+    const valid = links.filter((l) => Number(l.value) > 0)
+    const totals = new Map()
+    for (const l of valid) {
+      totals.set(l.source, Math.max(totals.get(l.source) || 0, 0))
+      totals.set(l.target, Math.max(totals.get(l.target) || 0, 0))
+    }
+    const incoming = new Map(), outgoing = new Map()
     valid.forEach((l) => {
-      out[l.source] = (out[l.source] || 0) + l.value
-      inn[l.target] = (inn[l.target] || 0) + l.value
+      incoming.set(l.target, (incoming.get(l.target) || 0) + l.value)
+      outgoing.set(l.source, (outgoing.get(l.source) || 0) + l.value)
     })
-    const size = (n) => Math.max(out[n] || 0, inn[n] || 0)
-    const levelKeys = Object.keys(cols).map(Number).sort((a, b) => a - b)
-    const pad = 10
-    const nodeW = 14
-    const usable = height - 20
-    const scale = Math.min(...levelKeys.map((k) => (usable - pad * (cols[k].length - 1)) / (cols[k].reduce((s, n) => s + size(n), 0) || 1)))
-    const pos = {}
-    levelKeys.forEach((k, ci) => {
-      cols[k].sort((a, b) => size(b) - size(a))
-      let y = 10
-      const x = levelKeys.length === 1 ? 0 : (ci * (width - nodeW - 150)) / (levelKeys.length - 1)
-      cols[k].forEach((n) => {
-        const h = Math.max(size(n) * scale, 3)
-        pos[n] = { x, y, h, in: 0, out: 0 }
-        y += h + pad
+    const byLevel = [0, 1, 2].map((lv) => nodes.filter((n) => n.level === lv)
+      .map((n) => ({ ...n, amount: Math.max(incoming.get(n.id) || 0, outgoing.get(n.id) || 0) }))
+      .filter((n) => n.amount > 0).sort((a, b) => b.amount - a.amount || a.label.localeCompare(b.label)))
+    const maxCount = Math.max(...byLevel.map((ns) => ns.length), 1)
+    const height = Math.max(320, maxCount * 52 + 34)
+    const padding = 20
+    const gap = 15
+    const scale = Math.min(...byLevel.map((ns) => {
+      const total = ns.reduce((a, n) => a + n.amount, 0)
+      return total > 0 ? Math.max(0.001, (height - 2 * padding - gap * Math.max(0, ns.length - 1)) / total) : Infinity
+    }))
+    const coords = new Map()
+    const xByLevel = [208, 490, 780]
+    byLevel.forEach((ns, lv) => {
+      const totalHeight = ns.reduce((a, n) => a + Math.max(9, n.amount * scale), 0) + gap * Math.max(0, ns.length - 1)
+      let y = Math.max(padding, (height - totalHeight) / 2)
+      ns.forEach((n, index) => {
+        const h = Math.max(9, n.amount * scale)
+        coords.set(n.id, { ...n, x: xByLevel[lv], y, h, in: 0, out: 0, color: PALETTE[(index + lv * 2) % PALETTE.length] })
+        y += h + gap
       })
     })
-    const paths = valid
-      .sort((a, b) => pos[a.source].y - pos[b.source].y)
+    const ribbons = [...valid].sort((a, b) => (coords.get(a.source)?.y || 0) - (coords.get(b.source)?.y || 0))
       .map((l) => {
-        const s = pos[l.source]
-        const t = pos[l.target]
-        const w = Math.max(l.value * scale, 1)
-        const y0 = s.y + s.out + w / 2
-        const y1 = t.y + t.in + w / 2
-        s.out += w
-        t.in += w
-        const x0 = s.x + nodeW
-        const x1 = t.x
-        const mid = (x0 + x1) / 2
-        return { ...l, w, d: `M${x0},${y0} C${mid},${y0} ${mid},${y1} ${x1},${y1}` }
-      })
-    return { pos, paths, nodeW, names, size, levelKeys }
-  }, [links, levels, height])
+        const s = coords.get(l.source), t = coords.get(l.target)
+        if (!s || !t) return null
+        const thickness = Math.max(0.7, l.value * scale)
+        const sy = s.y + s.out + thickness / 2
+        const ty = t.y + t.in + thickness / 2
+        s.out += thickness; t.in += thickness
+        const x0 = s.x + 14, x1 = t.x
+        const bend = (x0 + x1) / 2
+        return { ...l, thickness, color: s.color,
+          d: `M${x0} ${sy} C${bend} ${sy}, ${bend} ${ty}, ${x1} ${ty}` }
+      }).filter(Boolean)
+    return { height, ribbons, positions: [...coords.values()] }
+  }, [nodes, links])
 
-  if (!model.paths.length) return <Empty />
-  const colorOf = (n) => PALETTE[model.names.indexOf(n) % PALETTE.length]
+  if (!model.ribbons.length) return <Empty text="Tidak ada aliran dana untuk filter ini." />
+  const selected = (n) => activeNode === n.id
+  const small = (label, max) => label.length > max ? `${label.slice(0, max - 1)}…` : label
+  const clickNode = (n) => { if (n.selectable) onNodeClick?.(n) }
   return (
-    <div className="overflow-x-auto">
-      <svg viewBox={`0 0 ${width + 140} ${height}`} className="w-full min-w-[640px]" role="img" aria-label="Diagram Sankey aliran dana">
-        {model.paths.map((p, i) => (
-          <path key={i} d={p.d} fill="none" stroke={colorOf(p.source)} strokeWidth={p.w}
-            opacity={activeNode && activeNode !== p.source && activeNode !== p.target ? 0.1 : 0.35}>
-            <title>{`${p.source} → ${p.target}: ${valueFormatter(p.value)}`}</title>
-          </path>
-        ))}
-        {model.names.map((n) => {
-          const p = model.pos[n]
-          const right = p.x > 200
-          return (
-            <g key={n} onClick={() => onNodeClick?.(n, levels[n] ?? 0)} className={onNodeClick ? 'cursor-pointer' : ''}>
-              <rect x={p.x} y={p.y} width={model.nodeW} height={p.h} rx="3" fill={colorOf(n)} opacity={activeNode && activeNode !== n ? 0.45 : 1} />
-              <text x={right ? p.x - 6 : p.x + model.nodeW + 6} y={p.y + p.h / 2} dominantBaseline="middle"
-                textAnchor={right ? 'end' : 'start'} fontSize="11" fill={INK} fontWeight={activeNode === n ? 700 : 500}>
-                {n.length > 26 ? `${n.slice(0, 25)}…` : n} · {valueFormatter(model.size(n))}
-              </text>
-              <title>{`${n}: ${valueFormatter(model.size(n))}`}</title>
-            </g>
-          )
-        })}
-      </svg>
+    <div className="space-y-2">
+      <div className="flex flex-wrap gap-3 text-[11px] text-muted">
+        <span><b>1.</b> Wilayah</span><span><b>2.</b> Kategori pemasukan</span><span><b>3.</b> Peruntukan</span>
+        <span className="ml-auto">Arah aliran: kiri → kanan · arahkan kursor untuk nilai lengkap</span>
+      </div>
+      <div className="overflow-x-auto rounded-xl border border-line bg-white/70 p-2">
+        <svg viewBox={`0 0 ${width} ${model.height}`} className="w-full min-w-[720px]" role="img" aria-label="Sankey alokasi dana HKBP tiga tingkat">
+          <g>
+            {model.ribbons.map((p, i) => (
+              <path key={`${p.source}/${p.target}/${i}`} d={p.d} fill="none" stroke={p.color} strokeWidth={p.thickness}
+                opacity={activeNode && activeNode !== p.source && activeNode !== p.target ? 0.07 : 0.25}>
+                <title>{`${nodes.find((n) => n.id === p.source)?.label || p.source} → ${nodes.find((n) => n.id === p.target)?.label || p.target}: ${fmt(p.value)}`}</title>
+              </path>
+            ))}
+          </g>
+          {model.positions.map((n) => {
+            const centerY = n.y + n.h / 2
+            const isLeft = n.level === 0
+            const isCenter = n.level === 1
+            const labelX = isLeft ? n.x - 9 : n.x + 21
+            const maxLength = isLeft ? 25 : isCenter ? 26 : 22
+            return (
+              <g key={n.id} role={n.selectable ? 'button' : undefined} tabIndex={n.selectable ? 0 : undefined}
+                aria-label={`${n.label}, ${fmt(n.amount)}`}
+                onClick={() => clickNode(n)}
+                onKeyDown={(event) => { if (n.selectable && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); clickNode(n) } }}
+                className={n.selectable ? 'cursor-pointer focus:outline-none' : ''}>
+                <rect x={n.x} y={n.y} width="14" height={n.h} rx="3" fill={n.color}
+                  stroke={selected(n) ? '#132a4a' : 'transparent'} strokeWidth="2" />
+                {!isLeft && (
+                  <rect x={n.x + 18} y={centerY - 15} rx="5" width={n.level === 1 ? 185 : 216} height="31"
+                    fill="#ffffff" opacity="0.94" />
+                )}
+                <text x={labelX} y={centerY - 2} textAnchor={isLeft ? 'end' : 'start'}
+                  fontSize="11.5" fontWeight={selected(n) ? 800 : 650} fill={INK}>
+                  {small(n.label, maxLength)}
+                </text>
+                <text x={labelX} y={centerY + 11} textAnchor={isLeft ? 'end' : 'start'} fontSize="10" fill={MUTED}>
+                  {fmt(n.amount)}
+                </text>
+                <title>{`${n.label}: ${fmt(n.amount)}${n.selectable ? ' · Klik untuk memfilter' : ''}`}</title>
+              </g>
+            )
+          })}
+        </svg>
+      </div>
+      <p className="text-[11px] text-muted">Top N ditampilkan berdasarkan nominal. Kelompok “lainnya” menjaga total tetap utuh dan tidak dapat dipilih sebagai wilayah atau kategori spesifik.</p>
     </div>
   )
 }
@@ -259,36 +288,42 @@ export const AnnotatedTimeSeries = ({ history = [], forecast = [], annotations =
   )
 }
 
-/* ------------------------------------------------------------------ Heatmap */
-// rows: [string]  cols: [string]  matrix: { 'row|col': value }
-export const HeatmapGrid = ({ rows = [], cols = [], matrix = {}, onCellClick, activeRow, valueFormatter = fmt }) => {
+/* ------------------------------------------------------------ Heatmap 12 bulan */
+export const HeatmapGrid = ({ rows = [], cols = [], matrix = {}, onCellClick, activeRow, activeCol, valueFormatter = fmt }) => {
   const vals = Object.values(matrix)
   if (!rows.length || !vals.length) return <Empty />
   const max = Math.max(...vals, 1)
-  const cell = (v) => (v ? `rgba(30,90,138,${0.12 + 0.85 * (v / max)})` : '#f3f4f6')
+  const monthLabel = (value) => {
+    if (!/^\d{4}-\d{2}$/.test(value)) return value
+    const [y, m] = value.split('-')
+    return `${['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'][Number(m) - 1]} ${y}`
+  }
+  const color = (v) => v > 0 ? `rgba(30,90,138,${0.12 + 0.79 * v / max})` : '#f3f4f6'
   return (
     <div className="overflow-x-auto">
-      <table className="text-[11px] border-separate border-spacing-0.5 w-full min-w-[560px]">
-        <thead>
-          <tr><th className="sticky left-0 bg-surface" />{cols.map((c) => <th key={c} className="font-semibold text-muted px-1">{c.slice(5)}</th>)}</tr>
-        </thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r}>
-              <th className={`sticky left-0 bg-surface text-left pr-2 font-semibold whitespace-nowrap ${activeRow === r ? 'text-primary' : 'text-ink'}`}>{r.length > 24 ? `${r.slice(0, 23)}…` : r}</th>
-              {cols.map((c) => {
-                const v = matrix[`${r}|${c}`] || 0
-                return (
-                  <td key={c} onClick={() => onCellClick?.(r, c)} title={`${r} · ${c}: ${valueFormatter(v)}`}
-                    className="h-7 min-w-9 rounded text-center cursor-pointer" style={{ background: cell(v), color: v / max > 0.55 ? '#fff' : INK }}>
-                    {v ? valueFormatter(v).replace('Rp ', '') : ''}
-                  </td>
-                )
-              })}
-            </tr>
-          ))}
-        </tbody>
+      <table className="border-separate border-spacing-1 text-[11px] min-w-[720px] w-full">
+        <thead><tr><th className="sticky left-0 z-10 bg-surface text-left min-w-40">Huria</th>
+          {cols.map((c) => <th key={c} className={`font-semibold whitespace-nowrap px-1 ${activeCol === c ? 'text-primary' : 'text-muted'}`}>{monthLabel(c)}</th>)}
+        </tr></thead>
+        <tbody>{rows.map((r) => (
+          <tr key={r}><th title={r} className={`sticky left-0 z-10 bg-surface text-left pr-2 max-w-40 truncate ${activeRow === r ? 'text-primary' : 'text-ink'}`}>{r}</th>
+            {cols.map((c) => {
+              const key = `${r}|${c}`
+              const hasValue = Object.prototype.hasOwnProperty.call(matrix, key)
+              const v = hasValue ? matrix[key] : 0
+              return <td key={c}>
+                <button type="button" onClick={() => onCellClick?.(r, c)}
+                  aria-label={`${r}, ${monthLabel(c)}: ${valueFormatter(v)}`}
+                  title={`${r} · ${c}: ${valueFormatter(v)}`}
+                  className={`w-full min-w-10 h-8 rounded-md text-center text-[10px] focus-visible:outline-2 focus-visible:outline-primary ${activeCol === c || activeRow === r ? 'ring-1 ring-primary/50' : ''}`}
+                  style={{ background: color(v), color: v / max > 0.57 ? '#fff' : INK }}>
+                  {hasValue ? (v ? valueFormatter(v).replace('Rp ', '') : '0') : '–'}
+                </button>
+              </td>
+            })}</tr>
+        ))}</tbody>
       </table>
+      <p className="text-[11px] text-muted mt-1">Klik sel untuk memilih Huria sekaligus bulan. Sel tanpa data ditampilkan “–”, bukan bukti nominal nol.</p>
     </div>
   )
 }
